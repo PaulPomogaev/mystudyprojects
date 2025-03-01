@@ -14,7 +14,7 @@ namespace GeniyIdiotConsoleApp
             do
             {
                 Console.WriteLine($"Здравствуйте, введите своё имя");
-                string name = Console.ReadLine();
+                string name = Console.ReadLine(); 
 
                 int questionsCount = 5;
                 string[] questions = GetQuestions(questionsCount);
