@@ -94,7 +94,7 @@ namespace GeniyIdiotConsoleApp
                     return parsedNumber;
                 }
 
-                Console.WriteLine($"Ответ не соотвествует заданному диапазону. Пожалуйста, повторите ввод.");
+                Console.WriteLine($"Ответ не соответствует заданному диапазону. Пожалуйста, повторите ввод.");
             }
         }
         static List<int> GenerateRandomIndices(int questionsCount)
