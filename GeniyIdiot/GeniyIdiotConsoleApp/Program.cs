@@ -14,7 +14,7 @@ namespace GeniyIdiotConsoleApp
             do
             {
                 Console.WriteLine($"Здравствуйте, введите своё имя");
-                string name = Console.ReadLine(); 
+                string name = Console.ReadLine();
 
                 int questionsCount = 5;
                 string[] questions = GetQuestions(questionsCount);
@@ -168,7 +168,7 @@ namespace GeniyIdiotConsoleApp
                     return diagnosis[3];
                 if (persentage <= 83.33)
                     return diagnosis[4];
-                    return diagnosis[5];
+                return diagnosis[5];
             }
         }
 
@@ -196,15 +196,15 @@ namespace GeniyIdiotConsoleApp
 
             results.Add(result);
 
-            using(StreamWriter writer = new StreamWriter(resultsPath, true))
+            using (StreamWriter writer = new StreamWriter(resultsPath, true))
             {
-               if (!File.Exists(resultsPath))
-               {
+                if (!File.Exists(resultsPath))
+                {
                     writer.WriteLine("Name,CorrectAnswers,Diagnosis");
                 }
-                    
-               
-                foreach(var data in results)
+
+
+                foreach (var data in results)
                 {
                     writer.WriteLine($"{data.Name},{data.CorrectAnswers},{data.Diagnosis}");
                 }
@@ -229,8 +229,8 @@ namespace GeniyIdiotConsoleApp
                 return;
             }
 
-           using (StreamReader reader = new StreamReader(resultsPath))
-           {
+            using (StreamReader reader = new StreamReader(resultsPath))
+            {
                 reader.ReadLine();
 
                 string line;
@@ -250,14 +250,14 @@ namespace GeniyIdiotConsoleApp
                         Console.WriteLine($"Некорректное число в строке {line}");
                         continue;
                     }
-                        results.Add(new TestResult
-                        {
-                            Name = columns[0].Trim(),
-                            CorrectAnswers = correctAnswers,
-                            Diagnosis = columns[2].Trim()
-                        });
+                    results.Add(new TestResult
+                    {
+                        Name = columns[0].Trim(),
+                        CorrectAnswers = correctAnswers,
+                        Diagnosis = columns[2].Trim()
+                    });
                 }
-           }
+            }
 
             Console.WriteLine("\nПредыдущие результаты пользователей:");
             Console.WriteLine("---------------------------------------------------------------------------");
@@ -293,7 +293,7 @@ namespace GeniyIdiotConsoleApp
                 {
                     Console.WriteLine("Введите либо 'да' либо 'нет'!");
                 }
-                
+
             }
         }
     }
