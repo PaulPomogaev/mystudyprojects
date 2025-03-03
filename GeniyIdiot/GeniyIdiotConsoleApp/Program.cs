@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Xml.Linq;
+
 
 
 namespace GeniyIdiotConsoleApp
@@ -10,112 +9,64 @@ namespace GeniyIdiotConsoleApp
     {
         static void Main(string[] args)
         {
-            bool repeat;
+            string userResponse;
             do
             {
                 Console.WriteLine($"Здравствуйте, введите своё имя");
                 string name = Console.ReadLine();
 
                 int questionsCount = 5;
-                string[] questions = GetQuestions(questionsCount);
+                string[] questions = QuestionsGet(questionsCount);
 
-                int[] answers = GetAnswers(questionsCount);
 
-                int rightAnswersCount = 0;
+                int[] answers = AnswersGet(questionsCount);
 
-                List<int> rundomIndices = GenerateRandomIndices(questionsCount);
+                int countRightAnswers = 0;
+
+                Random random = new Random();
+                List<int> askedQuestions = new List<int>();
 
                 for (int i = 0; i < questionsCount; i++)
                 {
-                    int currentIndex = rundomIndices[i];
-                    Console.WriteLine($"Вопрос номер {i + 1}");
-                    Console.WriteLine(questions[currentIndex]);
+                    int randomIndex;
+                    do
+                    {
+                        randomIndex = random.Next(questionsCount);
+                    } while (askedQuestions.Contains(randomIndex));
 
-                    int userAnswer = GetUserAnswer();
-                    int rightAnswer = answers[currentIndex];
+                    askedQuestions.Add(randomIndex);
+                    Console.WriteLine($"Вопрос номер {i + 1}");
+
+                    Console.WriteLine(questions[randomIndex]);
+
+                    int userAnswer;
+                    while (!int.TryParse(Console.ReadLine(), out userAnswer))
+                    {
+                        Console.WriteLine("Ответ должен быть введён в форме числа, повторите ввод");
+                    }
+
+                    int rightAnswer = answers[randomIndex];
 
                     if (userAnswer == rightAnswer)
                     {
-                        rightAnswersCount++;
+                        countRightAnswers++;
                     }
                 }
 
-                Console.WriteLine($"{name}, количество правильных ответов: {rightAnswersCount}");
+                Console.WriteLine($"{name}, количество правильных ответов: {countRightAnswers}");
 
-                var diagosisCalculator = new DiagnosesCalculation();
-                string diagnosis = diagosisCalculator.GetResults(rightAnswersCount, questionsCount);
+                DiagnosesGet diagosisCalculator = new DiagnosesGet();
+                string diagnosis = diagosisCalculator.GetDiagnoses(countRightAnswers, questionsCount);
 
 
                 Console.WriteLine($"{name}, ваш диагноз: {diagnosis}");
-
-                SaveTestResult(name, rightAnswersCount, diagnosis);
-
-                repeat = TestRepeat();
-            } while (repeat);
-
-            if (AskToShowResults())
-            {
-                ShowTestResults();
-            }
+                Console.WriteLine("Хотите пройти тест ещё раз? (да/нет)");
+                userResponse = Console.ReadLine()?.ToLower();
+            } while (userResponse == "да");
 
             Console.WriteLine("Спасибо за участие! До свидания!");
-            Console.ReadKey();
         }
-        static bool TestRepeat()
-        {
-            string userRespond;
-            do
-            {
-                Console.WriteLine("Хотите пройти тест ещё раз? (да/нет)");
-                userRespond = Console.ReadLine()?.Trim().ToLower();
-                if (userRespond == "да")
-                {
-                    return true;
-                }
-                if (userRespond == "нет")
-                {
-                    return false;
-                }
-                else
-                {
-                    Console.WriteLine("Введите либо 'да' либо 'нет'!");
-                }
-            } while (true);
-        }
-        private static int GetUserAnswer()
-        {
-            while (true)
-            {
-                Console.WriteLine("Введите ответ в виде целого числа");
-                string userAnswer = Console.ReadLine();
-
-                if (int.TryParse(userAnswer, out int parsedNumber))
-                {
-                    return parsedNumber;
-                }
-
-                Console.WriteLine($"Ответ не соотвествует заданному диапазону. Пожалуйста, повторите ввод.");
-            }
-        }
-        static List<int> GenerateRandomIndices(int questionsCount)
-        {
-            Random random = new Random();
-            List<int> askedQuestions = new List<int>();
-
-            for (int i = 0; i < questionsCount; i++)
-            {
-                int randomIndex;
-                do
-                {
-                    randomIndex = random.Next(questionsCount);
-                }
-                while (askedQuestions.Contains(randomIndex));
-
-                askedQuestions.Add(randomIndex);
-            }
-            return askedQuestions;
-        }
-        static string[] GetQuestions(int questionsCount)
+        static string[] QuestionsGet(int questionsCount) // надюсь это соотвествует постулату "Самое главное слово в конце названия" как в лекции по чистому коду?
         {
             string[] questions = new string[questionsCount];
             questions[0] = "Сколько будет два плюс два умноженное на два?";
@@ -126,7 +77,7 @@ namespace GeniyIdiotConsoleApp
             return questions;
         }
 
-        static int[] GetAnswers(int questionsCount)
+        static int[] AnswersGet(int questionsCount)
         {
             int[] answers = new int[questionsCount];
             answers[0] = 6;
@@ -136,12 +87,11 @@ namespace GeniyIdiotConsoleApp
             answers[4] = 2;
             return answers;
         }
-
-        public class DiagnosesCalculation
+        public class DiagnosesGet
         {
             private string[] diagnosis;
 
-            public DiagnosesCalculation()
+            public DiagnosesGet()
             {
                 diagnosis = new string[6];
                 diagnosis[0] = "Идиот";
@@ -151,150 +101,24 @@ namespace GeniyIdiotConsoleApp
                 diagnosis[4] = "Талант";
                 diagnosis[5] = "Гений";
             }
-
-            public string GetResults(int correctAnswers, int totalQuestions)
+            public string GetDiagnoses(int correctAnswers, int totalQuestions)
             {
-                double persentage = (double)correctAnswers / totalQuestions * 100;
+                double persantage = (double)correctAnswers / totalQuestions * 100;
 
-                // переменная persantage показывает процентное соотношение правильных ответов к количеству заданных вопросов, что определяет диагноз
-                // каждая цифра 16.66-33.33 и т.д., равномерно делит диапазон от 0% до 100% на 6 частей, каждая из которых соответствует диагнозу
-                if (persentage <= 16.66)
-                    return diagnosis[0];
-                if (persentage <= 33.33)
-                    return diagnosis[1];
-                if (persentage <= 50)
-                    return diagnosis[2];
-                if (persentage <= 66.66)
-                    return diagnosis[3];
-                if (persentage <= 83.33)
-                    return diagnosis[4];
-                    return diagnosis[5];
-            }
-        }
-
-        public class TestResult
-        {
-            public string Name { get; set; }
-            public int CorrectAnswers { get; set; }
-            public string Diagnosis { get; set; }
-        }
-
-        static void SaveTestResult(string name, int correctAnswers, string diagnosis)
-        {
-            var result = new TestResult
-            {
-                Name = name,
-
-                CorrectAnswers = correctAnswers,
-
-                Diagnosis = diagnosis
-            };
-
-            List<TestResult> results = new List<TestResult>();
-
-            string resultsPath = "results.csv";
-
-            results.Add(result);
-
-            using(StreamWriter writer = new StreamWriter(resultsPath, true))
-            {
-               if (!File.Exists(resultsPath))
-               {
-                    writer.WriteLine("Name,CorrectAnswers,Diagnosis");
-                }
-                    
-               
-                foreach(var data in results)
-                {
-                    writer.WriteLine($"{data.Name},{data.CorrectAnswers},{data.Diagnosis}");
-                }
-            }
-
-            if (!File.Exists(resultsPath))
-            {
-                Console.WriteLine("Файл c результатами тестирования ещё не создан");
-            }
-
-        }
-
-        static void ShowTestResults()
-        {
-            string resultsPath = "results.csv";
-
-            List<TestResult> results = new List<TestResult>();
-
-            if (!File.Exists(resultsPath))
-            {
-                Console.WriteLine("История результатов пуста");
-                return;
-            }
-
-           using (StreamReader reader = new StreamReader(resultsPath))
-           {
-                reader.ReadLine();
-
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] columns = line.Split(',');
-
-                    if (columns.Length != 3)
-                    {
-                        Console.WriteLine($"ОшибкаБ в строке {line} недостаточное количество колонок");
-                        continue;
-                    }
-
-                    if (!int.TryParse(columns[1], out int correctAnswers))
-                    {
-                        Console.WriteLine($"Некорректное число в строке {line}");
-                        continue;
-                    }
-                        results.Add(new TestResult
-                        {
-                            Name = columns[0].Trim(),
-                            CorrectAnswers = correctAnswers,
-                            Diagnosis = columns[2].Trim()
-                        });
-                }
-           }
-
-            Console.WriteLine("\nПредыдущие результаты пользователей:");
-            Console.WriteLine("---------------------------------------------------------------------------");
-            Console.WriteLine("| {0, -30} | {1, 25} | {2, -10} |", "ФИО", "Кол-во правильных ответов", "Диагноз");
-            Console.WriteLine("---------------------------------------------------------------------------");
-            foreach (var result in results)
-            {
-                Console.WriteLine("| {0, -30} | {1, 25} | {2, -10} |",
-                    result.Name,
-                    result.CorrectAnswers,
-                    result.Diagnosis);
-            }
-            Console.WriteLine("---------------------------------------------------------------------------");
-        }
-
-        static bool AskToShowResults()
-        {
-            while (true)
-            {
-                Console.WriteLine("Показать историю результатов? (да/нет)");
-
-                string userRespond = Console.ReadLine().Trim().ToLower();
-
-                if (userRespond == "да")
-                {
-                    return true;
-                }
-                if (userRespond == "нет")
-                {
-                    return false;
-                }
+                if (persantage <= 16.66)
+                { return diagnosis[0]; }
+                if (persantage <= 33.33)
+                { return diagnosis[1]; }
+                if (persantage <= 50)
+                { return diagnosis[2]; }
+                if (persantage <= 66.66)
+                { return diagnosis[3]; }
+                if (persantage <= 83.33)
+                { return diagnosis[4]; }
                 else
-                {
-                    Console.WriteLine("Введите либо 'да' либо 'нет'!");
-                }
-                
+                { return diagnosis[5]; }
             }
         }
+
     }
 }
