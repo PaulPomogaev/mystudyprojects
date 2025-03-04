@@ -290,10 +290,9 @@ namespace GeniyIdiotConsoleApp
 				{
 					return false;
 				}
-				else
-				{
-					Console.WriteLine("Введите либо 'да' либо 'нет'!");
-				}
+				
+				Console.WriteLine("Введите либо 'да' либо 'нет'!");
+				
 
 			}
 		}
