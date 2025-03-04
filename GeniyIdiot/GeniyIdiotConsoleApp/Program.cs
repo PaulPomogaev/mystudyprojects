@@ -16,10 +16,16 @@ namespace GeniyIdiotConsoleApp
 				Console.WriteLine($"Здравствуйте, введите своё имя");
 				string name = Console.ReadLine();
 
-				int questionsCount = 5;
-				string[] questions = GetQuestions(questionsCount);
+				List<string> questions = GetQuestions();
 
-				int[] answers = GetAnswers(questionsCount);
+				List<int> answers = GetAnswers();
+
+				if (questions.Count != answers.Count)
+				{
+					Console.WriteLine("Ошибка конфигурации теста. Количество вопросов не соотвествует количеству ответов");
+					return;
+				}
+				int questionsCount = questions.Count;
 
 				int rightAnswersCount = 0;
 
@@ -115,41 +121,46 @@ namespace GeniyIdiotConsoleApp
 			}
 			return askedQuestions;
 		}
-		static string[] GetQuestions(int questionsCount)
+		static List<string> GetQuestions()
 		{
-			string[] questions = new string[questionsCount];
-			questions[0] = "Сколько будет два плюс два умноженное на два?";
-			questions[1] = "Бревно нужно распилить на 10 частей, сколько нужно сделать распилов?";
-			questions[2] = "На двух руках 10 пальцев, сколько пальцев на 5 руках?";
-			questions[3] = "Укол делают каждые пол часа, сколько нужно минут для трёх уколов?";
-			questions[4] = "Пять свечей горело, две потухли, сколько свечей осталось?";
-			return questions;
+			return new List<string>
+			{
+			"Сколько будет два плюс два умноженное на два?",
+			"Бревно нужно распилить на 10 частей, сколько нужно сделать распилов?",
+			"На двух руках 10 пальцев, сколько пальцев на 5 руках?",
+			"Укол делают каждые пол часа, сколько нужно минут для трёх уколов?",
+			"Пять свечей горело, две потухли, сколько свечей осталось?"
+		    };
 		}
 
-		static int[] GetAnswers(int questionsCount)
+		static List<int> GetAnswers()
 		{
-			int[] answers = new int[questionsCount];
-			answers[0] = 6;
-			answers[1] = 9;
-			answers[2] = 25;
-			answers[3] = 60;
-			answers[4] = 2;
-			return answers;
+			return new List<int>
+			{ 
+			   6,
+			   9,
+			   25,
+			   60,
+			   2
+		    };
 		}
 
 		public class DiagnosesCalculation
 		{
-			private string[] diagnosis;
+			private List<string> diagnosis;
 
 			public DiagnosesCalculation()
 			{
-				diagnosis = new string[6];
-				diagnosis[0] = "Идиот";
-				diagnosis[1] = "Кретин";
-				diagnosis[2] = "Дурак";
-				diagnosis[3] = "Нормальный";
-				diagnosis[4] = "Талант";
-				diagnosis[5] = "Гений";
+				diagnosis = new List<string>()
+				{
+                    "Идиот",
+                    "Кретин",
+                    "Дурак",
+                    "Нормальный",
+                    "Талант",
+                    "Гений"
+                };
+				
 			}
 
 			public string GetResults(int correctAnswers, int totalQuestions)
