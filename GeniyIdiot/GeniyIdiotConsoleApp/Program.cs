@@ -70,7 +70,7 @@ namespace GeniyIdiotConsoleApp
 		static bool TestRepeat()
 		{
 			string userRespond;
-			do
+			while(true)
 			{
 				Console.WriteLine("Хотите пройти тест ещё раз? (да/нет)");
 				userRespond = Console.ReadLine()?.Trim().ToLower();
@@ -86,7 +86,7 @@ namespace GeniyIdiotConsoleApp
 				{
 					Console.WriteLine("Введите либо 'да' либо 'нет'!");
 				}
-			} while (true);
+			}
 		}
 		private static int GetUserAnswer()
 		{
