@@ -217,17 +217,11 @@ namespace GeniyIdiotConsoleApp
 
 		}
 
-		static void ShowTestResults()
+		static List<TestResult> SaveTestResults()
 		{
 			string resultsPath = "results.csv";
 
 			List<TestResult> results = new List<TestResult>();
-
-			if (!File.Exists(resultsPath))
-			{
-				Console.WriteLine("История результатов пуста");
-				return;
-			}
 
 			using (StreamReader reader = new StreamReader(resultsPath))
 			{
@@ -258,8 +252,15 @@ namespace GeniyIdiotConsoleApp
 					});
 				}
 			}
+			return results;
+		}
+		 
+		static void ShowTestResults()
+		{
+			List<TestResult> results = SaveTestResults();
 
-			Console.WriteLine("\nПредыдущие результаты пользователей:");
+
+            Console.WriteLine("\nПредыдущие результаты пользователей:");
 			Console.WriteLine("---------------------------------------------------------------------------");
 			Console.WriteLine("| {0, -30} | {1, 25} | {2, -10} |", "ФИО", "Кол-во правильных ответов", "Диагноз");
 			Console.WriteLine("---------------------------------------------------------------------------");
