@@ -2,7 +2,11 @@
 {
     internal class Program
     {
-#pragma warning disable
+        /// <summary>
+        /// тест
+        /// </summary>
+        /// <param name="args"></param>
+        #pragma warning disable
         static void Main(string[] args)
         {
             Console.SetWindowSize(140, 35);
@@ -34,7 +38,7 @@
                 Console.WriteLine("Вам предстоит ответить на 12 коротких логических вопросов.\n" +
                 "За 2 минуты вы должны дать ответ. После ответа на все вопросы система поставит вам диагноз.\n" +
                 "P.S.: данная тестирующая система носит исключительно развлекательный характер, не воспринимайте всё всерьёз.");
-                //Thread.Sleep(10000); Console.Clear();
+                Thread.Sleep(8500); Console.Clear();
 
                 Console.WriteLine("Введите ваше имя:");
                 NewUser.FirstName = Console.ReadLine();
