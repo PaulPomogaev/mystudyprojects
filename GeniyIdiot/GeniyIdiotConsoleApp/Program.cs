@@ -94,6 +94,7 @@
                 }
 
                 //Test.ShowAllResults(NewUser); В ДОРАБОТКЕ!
+            }
 
             public void ContactFeedback()
             {
