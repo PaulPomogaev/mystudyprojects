@@ -263,8 +263,7 @@ namespace GeniyIdiotConsoleApp
 		{
 			List<TestResult> results = ReadTestResults();
 
-
-            Console.WriteLine("\nПредыдущие результаты пользователей:");
+			Console.WriteLine("\nПредыдущие результаты пользователей:");
 			Console.WriteLine(TableSeparator);
 			Console.WriteLine("ФИО", "Кол-во правильных ответов", "Диагноз");
 			Console.WriteLine(TableSeparator);
@@ -297,8 +296,7 @@ namespace GeniyIdiotConsoleApp
 				
 				Console.WriteLine("Введите либо 'да' либо 'нет'!");
 				
-
-			}
+            }
 		}
 	}
 }
