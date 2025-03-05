@@ -221,11 +221,6 @@ namespace GeniyIdiotConsoleApp
 				}
 			}
 
-			if (!File.Exists(resultsPath))
-			{
-				Console.WriteLine("Файл c результатами тестирования ещё не создан");
-			}
-
 		}
 
 		static List<TestResult> SaveTestResults()
