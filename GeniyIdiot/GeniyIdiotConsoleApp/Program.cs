@@ -8,7 +8,11 @@ namespace GeniyIdiotConsoleApp
 {
 	internal class Program
 	{
-		static void Main(string[] args)
+		private const string TableRowFormat = "| {0, -30} | {1, 25} | {2, -10} |";
+
+		private const string TableSeparator = "---------------------------------------------------------------------------";
+
+        static void Main(string[] args)
 		{
 			bool repeat;
 			do
@@ -261,17 +265,17 @@ namespace GeniyIdiotConsoleApp
 
 
             Console.WriteLine("\nПредыдущие результаты пользователей:");
-			Console.WriteLine("---------------------------------------------------------------------------");
-			Console.WriteLine("| {0, -30} | {1, 25} | {2, -10} |", "ФИО", "Кол-во правильных ответов", "Диагноз");
-			Console.WriteLine("---------------------------------------------------------------------------");
+			Console.WriteLine(TableSeparator);
+			Console.WriteLine("ФИО", "Кол-во правильных ответов", "Диагноз");
+			Console.WriteLine(TableSeparator);
 			foreach (var result in results)
 			{
-				Console.WriteLine("| {0, -30} | {1, 25} | {2, -10} |",
+				Console.WriteLine(TableRowFormat,
 					result.Name,
 					result.CorrectAnswers,
 					result.Diagnosis);
 			}
-			Console.WriteLine("---------------------------------------------------------------------------");
+			Console.WriteLine(TableSeparator);
 		}
 
 		static bool AskToShowResults()
