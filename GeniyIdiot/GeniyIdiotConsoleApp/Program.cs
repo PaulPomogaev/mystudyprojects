@@ -54,7 +54,14 @@ namespace GeniyIdiotConsoleApp
 
 				Console.WriteLine($"{name}, ваш диагноз: {diagnosis}");
 
-				SaveTestResult(name, rightAnswersCount, diagnosis);
+				var testResult = new TestResult
+				{
+					Name = name,
+					CorrectAnswers = rightAnswersCount,
+					Diagnosis = diagnosis
+				};
+
+				SaveTestResult(testResult);
 
 				repeat = TestRepeat();
 			} while (repeat);
@@ -190,40 +197,27 @@ namespace GeniyIdiotConsoleApp
 			public string Diagnosis { get; set; }
 		}
 
-		static void SaveTestResult(string name, int correctAnswers, string diagnosis)
+		static void SaveTestResult(TestResult result)
 		{
-			var result = new TestResult
-			{
-				Name = name,
-
-				CorrectAnswers = correctAnswers,
-
-				Diagnosis = diagnosis
-			};
-
-			List<TestResult> results = new List<TestResult>();
-
 			string resultsPath = "results.csv";
 
-			results.Add(result);
+			bool needHeader = !File.Exists(resultsPath);
 
-			using (StreamWriter writer = new StreamWriter(resultsPath, true))
+
+            using (StreamWriter writer = new StreamWriter(resultsPath, true))
 			{
-				if (!File.Exists(resultsPath))
+				if (needHeader)
 				{
 					writer.WriteLine("Name,CorrectAnswers,Diagnosis");
 				}
 
-
-				foreach (var data in results)
-				{
-					writer.WriteLine($"{data.Name},{data.CorrectAnswers},{data.Diagnosis}");
-				}
+				writer.WriteLine($"{result.Name},{result.CorrectAnswers},{result.Diagnosis}");
+				
 			}
 
 		}
 
-		static List<TestResult> SaveTestResults()
+		static List<TestResult> ReadTestResults()
 		{
 			string resultsPath = "results.csv";
 
@@ -263,7 +257,7 @@ namespace GeniyIdiotConsoleApp
 		 
 		static void ShowTestResults()
 		{
-			List<TestResult> results = SaveTestResults();
+			List<TestResult> results = ReadTestResults();
 
 
             Console.WriteLine("\nПредыдущие результаты пользователей:");
