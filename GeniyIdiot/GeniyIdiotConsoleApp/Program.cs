@@ -80,11 +80,10 @@ namespace GeniyIdiotConsoleApp
 		}
 		static bool TestRepeat()
 		{
-			string userRespond;
 			while(true)
 			{
 				Console.WriteLine("Хотите пройти тест ещё раз? (да/нет)");
-				userRespond = Console.ReadLine()?.Trim().ToLower();
+				var userRespond = Console.ReadLine()?.Trim().ToLower();
 				if (userRespond == "да")
 				{
 					return true;
