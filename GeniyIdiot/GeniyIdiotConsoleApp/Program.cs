@@ -33,7 +33,7 @@ namespace GeniyIdiotConsoleApp
 
 				int rightAnswersCount = 0;
 
-				List<int> rundomIndices = GenerateRandomIndices(questionsCount);
+				List<int> rundomIndices = GenerateRandomIndices(questions.Count);
 
 				for (int i = 0; i < questionsCount; i++)
 				{
