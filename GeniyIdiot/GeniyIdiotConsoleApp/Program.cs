@@ -108,7 +108,7 @@ namespace GeniyIdiotConsoleApp
 					return parsedNumber;
 				}
 
-				Console.WriteLine($"Ответ не соответствует заданному диапазону. Пожалуйста, повторите ввод.");
+				Console.WriteLine($"Ответ не соответствует заданному диапазону от -2*10^9 до 2*10^9. Пожалуйста, повторите ввод.");
 			}
 		}
 		static List<int> GenerateRandomIndices(int questionsCount)
