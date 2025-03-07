@@ -279,7 +279,7 @@ namespace GeniyIdiotConsoleApp
 			{
 				Console.WriteLine("Показать историю результатов? (да/нет)");
 
-				string userRespond = Console.ReadLine().Trim().ToLower();
+				var userRespond = Console.ReadLine().Trim().ToLower();
 
 				if (userRespond == "да")
 				{
