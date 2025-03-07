@@ -1,4 +1,4 @@
-﻿namespace GeniyIdiotConsoleApp3
+﻿namespace GeniyIdiotConsoleApp
 {
     internal class Program
     {
