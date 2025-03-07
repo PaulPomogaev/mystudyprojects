@@ -33,22 +33,24 @@ namespace GeniyIdiotConsoleApp
 
 				int rightAnswersCount = 0;
 
-				List<int> rundomIndices = GenerateRandomIndices(questions.Count);
+				var random = new Random();
 
 				for (int i = 0; i < questionsCount; i++)
 				{
-					int currentIndex = rundomIndices[i];
 					Console.WriteLine($"Вопрос номер {i + 1}");
-					Console.WriteLine(questions[currentIndex]);
+					var randomQuestionIndex = random.Next(questions.Count);
+					Console.WriteLine(questions[randomQuestionIndex]);
 
 					int userAnswer = GetUserAnswer();
-					int rightAnswer = answers[currentIndex];
+					int rightAnswer = answers[randomQuestionIndex];
 
-					if (userAnswer == rightAnswer)
+					if (userAnswer == rightAnswer) 
 					{
 						rightAnswersCount++;
 					}
-				}
+					questions.RemoveAt(randomQuestionIndex);
+					answers.RemoveAt(randomQuestionIndex);
+                }
 
 				Console.WriteLine($"{name}, количество правильных ответов: {rightAnswersCount}");
 
@@ -110,24 +112,7 @@ namespace GeniyIdiotConsoleApp
 				Console.WriteLine($"Ответ не соответствует заданному диапазону от -2*10^9 до 2*10^9. Пожалуйста, повторите ввод.");
 			}
 		}
-		static List<int> GenerateRandomIndices(int questionsCount)
-		{
-			Random random = new Random();
-			List<int> askedQuestions = new List<int>();
-
-			for (int i = 0; i < questionsCount; i++)
-			{
-				int randomIndex;
-				do
-				{
-					randomIndex = random.Next(questionsCount);
-				}
-				while (askedQuestions.Contains(randomIndex));
-
-				askedQuestions.Add(randomIndex);
-			}
-			return askedQuestions;
-		}
+		
 		static List<string> GetQuestions()
 		{
 			return new List<string>
@@ -261,7 +246,7 @@ namespace GeniyIdiotConsoleApp
 
 			Console.WriteLine("\nПредыдущие результаты пользователей:");
 			Console.WriteLine(TableSeparator);
-			Console.WriteLine("ФИО", "Кол-во правильных ответов", "Диагноз");
+			Console.WriteLine(TableRowFormat, "ФИО", "Кол-во правильных ответов", "Диагноз");
 			Console.WriteLine(TableSeparator);
 			foreach (var result in results)
 			{
@@ -291,8 +276,7 @@ namespace GeniyIdiotConsoleApp
 				}
 				
 				Console.WriteLine("Введите либо 'да' либо 'нет'!");
-				
-            }
+			}
 		}
 	}
 }
