@@ -400,3 +400,11 @@ FodyWeavers.xsd
 *.sln.iml
 
 /.gitignore
+/GeniyIdiot/GeniyIdiotConsoleApp/Properties/AssemblyInfo.cs
+/GeniyIdiot/GeniyIdiotConsoleApp/App.config
+/GeniyIdiot/GeniyIdiotConsoleApp/GeniyIdiotConsoleApp.csproj
+/GeniyIdiot/GeniyIdiotConsoleApp/packages.config
+/GeniyIdiot/GeniyIdiotConsoleApp/Program.cs
+/GeniyIdiot/GeniyIdiot.sln
+/.gitignore
+/Program.cs
