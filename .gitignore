@@ -2,8 +2,4 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/OOP_15/v17/DocumentLayout.backup.json
-/.vs/OOP_15/v17/DocumentLayout.json
-/GeniyIdiot/GeniyIdiotConsoleApp/Program.cs
-/.vs/OOP_15/v17/.wsuo
-/.vs/VSWorkspaceState.json
+.vs/

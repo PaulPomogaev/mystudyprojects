@@ -35,6 +35,8 @@ bld/
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+*.wsuo
+VSWorkspaceState.json
 
 
 # Visual Studio 2017 auto generated files
