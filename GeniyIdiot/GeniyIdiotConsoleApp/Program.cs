@@ -122,7 +122,7 @@ namespace GeniyIdiotConsoleApp
                 Console.WriteLine($"{name}, количество правильных ответов: {rightAnswersCount}");
 
                 var diagosisCalculator = new DiagnosesCalculation();
-                string diagnosis = diagosisCalculator.GetResults(rightAnswersCount, questions.Count);
+                string diagnosis = diagosisCalculator.GetResult(rightAnswersCount, questions.Count);
 
 
                 Console.WriteLine($"{name}, ваш диагноз: {diagnosis}");
@@ -198,7 +198,7 @@ namespace GeniyIdiotConsoleApp
 
             }
 
-            public string GetResults(int correctAnswers, int totalQuestions)
+            public string GetResult(int correctAnswers, int totalQuestions)
             {
                 double persentage = (double)correctAnswers / totalQuestions * 100;
 
