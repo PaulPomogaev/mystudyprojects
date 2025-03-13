@@ -46,10 +46,10 @@ namespace GeniyIdiotConsoleApp
                     currentTestQuestions.RemoveAt(randomQuestionIndex);
                 }
 
-                Console.WriteLine($"{name}, количество правильных ответов: {user.rightAnswersCount}");
+                Console.WriteLine($"{name}, количество правильных ответов: {user.RightAnswersCount}");
 
                 var diagosisCalculator = new DiagnosesCalculation();
-                string diagnosis = diagosisCalculator.GetResult(user.rightAnswersCount, questions.Count);
+                string diagnosis = diagosisCalculator.GetResult(user.RightAnswersCount, questions.Count);
 
 
                 Console.WriteLine($"{name}, ваш диагноз: {diagnosis}");
@@ -57,7 +57,7 @@ namespace GeniyIdiotConsoleApp
                 var testResult = new TestResult
                 (
                     new User(name),
-                    user.rightAnswersCount,
+                    user.RightAnswersCount,
                     diagnosis
                 );
 
