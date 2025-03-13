@@ -15,7 +15,7 @@ namespace GeniyIdiotConsoleApp
 
             if (needHeader)
             {
-                FileManager.AppendToFile(resultsPath, "Name,CorrectAnswers,Diagnosis");
+                FileManager.Append(resultsPath, "Name,CorrectAnswers,Diagnosis");
             }
 
             var value = $"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}";

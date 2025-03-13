@@ -6,7 +6,7 @@ namespace GeniyIdiotConsoleApp
 {
     public class FileManager
     {
-        public static void AppendToFile(string fileName, string value)
+        public static void Append(string fileName, string value)
         {
             using (var writer = new StreamWriter(fileName, true))
             {
