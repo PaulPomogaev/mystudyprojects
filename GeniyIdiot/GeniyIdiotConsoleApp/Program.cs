@@ -12,7 +12,7 @@ namespace GeniyIdiotConsoleApp
         private const string TableSeparator = "---------------------------------------------------------------------------";
 
         static void Main(string[] args)
-        { // тест
+        { 
             bool repeat;
             var questionsStorage = new QuestionsStorage();
            
