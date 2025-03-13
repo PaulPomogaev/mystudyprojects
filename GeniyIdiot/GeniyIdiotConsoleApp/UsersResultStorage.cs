@@ -12,15 +12,12 @@ namespace GeniyIdiotConsoleApp
         {
             bool needHeader = !File.Exists(resultsPath);
 
-
             if (needHeader)
             {
                 FileManager.Append(resultsPath, "Name,CorrectAnswers,Diagnosis");
             }
 
             var value = $"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}";
-
-
         }
 
         public static List<TestResult> ReadTestResults()
