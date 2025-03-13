@@ -68,7 +68,7 @@ namespace GeniyIdiotConsoleApp
 
             if (AskToShowResults())
             {
-                ShowTestResults();
+                ShowTestResults(resultsStorage);
             }
 
             Console.WriteLine("Спасибо за участие! До свидания!");
@@ -145,47 +145,9 @@ namespace GeniyIdiotConsoleApp
             }
         }
 
-        static List<TestResult> ReadTestResults()
+        static void ShowTestResults(UsersResultStorage storage)
         {
-            string resultsPath = "results.csv";
-
-            List<TestResult> results = new List<TestResult>();
-
-            using (StreamReader reader = new StreamReader(resultsPath))
-            {
-                reader.ReadLine();
-
-                string line;
-
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] columns = line.Split(',');
-
-                    if (columns.Length != 3)
-                    {
-                        Console.WriteLine($"Ошибка в строке {line} недостаточное количество колонок");
-                        continue;
-                    }
-
-                    if (!int.TryParse(columns[1], out int correctAnswers))
-                    {
-                        Console.WriteLine($"Некорректное число в строке {line}");
-                        continue;
-                    }
-                    results.Add(new TestResult
-                    (
-                        new User(columns[0].Trim()),
-                        correctAnswers,
-                        columns[2].Trim()
-                    ));
-                }
-            }
-            return results;
-        }
-
-        static void ShowTestResults()
-        {
-            List<TestResult> results = ReadTestResults();
+            List<TestResult> results = storage.ReadTestResults();
 
             Console.WriteLine("\nПредыдущие результаты пользователей:");
             Console.WriteLine(TableSeparator);
