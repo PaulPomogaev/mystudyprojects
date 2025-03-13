@@ -18,20 +18,26 @@ namespace GeniyIdiotConsoleApp
             }
 
             var value = $"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}";
+            FileManager.Append(resultsPath, value);
         }
 
         public static List<TestResult> ReadTestResults()
         {
             List<TestResult> results = new List<TestResult>();
 
-            using (var reader = new StreamReader(resultsPath))
-            {
-                reader.ReadLine();
+            var lines = FileManager.GetValue(resultsPath);
 
-                string line;
+            bool isHeaderSkipped = false;
 
-                while ((line = reader.ReadLine()) != null)
+                
+                foreach(var line in lines)
                 {
+                     if (!isHeaderSkipped)
+                     {
+                         isHeaderSkipped = true;
+                         continue;
+                     }
+
                     string[] columns = line.Split(',');
 
                     if (columns.Length != 3)
@@ -54,7 +60,7 @@ namespace GeniyIdiotConsoleApp
                         columns[2].Trim()
                     ));
                 }
-            }
+            
             return results;
         }
     }
