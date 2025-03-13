@@ -22,12 +22,10 @@ namespace GeniyIdiotConsoleApp
             {
                 Console.WriteLine($"Здравствуйте, введите своё имя");
                 string name = Console.ReadLine();
-
+                var user = new User(name);
 
                 List<Question> questions = questionsStorage.GetAllQuestions();
                 List<Question> currentTestQuestions = new List<Question>(questions);
-
-                int rightAnswersCount = 0;
 
                 var random = new Random();
 
@@ -43,15 +41,15 @@ namespace GeniyIdiotConsoleApp
 
                     if (userAnswer == rightAnswer)
                     {
-                        rightAnswersCount++;
+                        user.AcceptRightAnswer();
                     }
                     currentTestQuestions.RemoveAt(randomQuestionIndex);
                 }
 
-                Console.WriteLine($"{name}, количество правильных ответов: {rightAnswersCount}");
+                Console.WriteLine($"{name}, количество правильных ответов: {user.rightAnswersCount}");
 
                 var diagosisCalculator = new DiagnosesCalculation();
-                string diagnosis = diagosisCalculator.GetResult(rightAnswersCount, questions.Count);
+                string diagnosis = diagosisCalculator.GetResult(user.rightAnswersCount, questions.Count);
 
 
                 Console.WriteLine($"{name}, ваш диагноз: {diagnosis}");
@@ -59,7 +57,7 @@ namespace GeniyIdiotConsoleApp
                 var testResult = new TestResult
                 (
                     new User(name),
-                    rightAnswersCount,
+                    user.rightAnswersCount,
                     diagnosis
                 );
 
