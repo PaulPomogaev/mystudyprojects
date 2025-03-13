@@ -7,28 +7,27 @@ namespace GeniyIdiotConsoleApp
 {
     public class UsersResultStorage
     {
-        private static string resultsPath = "results.csv";
+        static string resultsPath = "results.csv";
         public static void SaveTestResult(TestResult result)
         {
             bool needHeader = !File.Exists(resultsPath);
 
-            using (StreamWriter writer = new StreamWriter(resultsPath, true))
+
+            if (needHeader)
             {
-                if (needHeader)
-                {
-                    writer.WriteLine("Name,RightAnswersCount,Diagnosis");
-                }
-
-                writer.WriteLine($"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}");
-
+                FileManager.AppendToFile(resultsPath, "Name,CorrectAnswers,Diagnosis");
             }
+
+            var value = $"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}";
+
+
         }
 
         public static List<TestResult> ReadTestResults()
         {
             List<TestResult> results = new List<TestResult>();
 
-            using (StreamReader reader = new StreamReader(resultsPath))
+            using (var reader = new StreamReader(resultsPath))
             {
                 reader.ReadLine();
 
@@ -44,12 +43,11 @@ namespace GeniyIdiotConsoleApp
                         continue;
                     }
 
-                    if (!int.TryParse(columns[1].Trim(), out int correctAnswers))
+                    if (!int.TryParse(columns[1], out int correctAnswers))
                     {
                         Console.WriteLine($"Некорректное число в строке {line}");
                         continue;
                     }
-
                     var user = new User(columns[0].Trim());
                     user.RightAnswersCount = int.Parse(columns[1].Trim());
 
