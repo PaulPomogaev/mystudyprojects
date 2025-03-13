@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Xml.Linq;
 
 
 namespace GeniyIdiotConsoleApp
 {
-
     internal class Program
     {
         private const string TableRowFormat = "| {0, -30} | {1, 25} | {2, -10} |";
@@ -17,7 +15,7 @@ namespace GeniyIdiotConsoleApp
         {
             bool repeat;
             var questionsStorage = new QuestionsStorage();
-            var resultsStorage = new UsersResultStorage();
+           
             do
             {
                 Console.WriteLine($"Здравствуйте, введите своё имя");
@@ -56,19 +54,18 @@ namespace GeniyIdiotConsoleApp
 
                 var testResult = new TestResult
                 (
-                    new User(name),
-                    user.RightAnswersCount,
+                    user,
                     diagnosis
                 );
 
-                resultsStorage.SaveTestResult(testResult);
+                UsersResultStorage.SaveTestResult(testResult);
 
                 repeat = TestRepeat();
             } while (repeat);
 
             if (AskToShowResults())
             {
-                ShowTestResults(resultsStorage);
+                ShowTestResults();
             }
 
             Console.WriteLine("Спасибо за участие! До свидания!");
@@ -125,9 +122,9 @@ namespace GeniyIdiotConsoleApp
 
             }
 
-            public string GetResult(int correctAnswers, int totalQuestions)
+            public string GetResult(int rightAnswersCount, int totalQuestions)
             {
-                double persentage = (double)correctAnswers / totalQuestions * 100;
+                double persentage = (double)rightAnswersCount / totalQuestions * 100;
 
                 // переменная persantage показывает процентное соотношение правильных ответов к количеству заданных вопросов, что определяет диагноз
                 // каждая цифра 16.66-33.33 и т.д., равномерно делит диапазон от 0% до 100% на 6 частей, каждая из которых соответствует диагнозу
@@ -145,9 +142,9 @@ namespace GeniyIdiotConsoleApp
             }
         }
 
-        static void ShowTestResults(UsersResultStorage storage)
+        static void ShowTestResults()
         {
-            List<TestResult> results = storage.ReadTestResults();
+            List<TestResult> results = UsersResultStorage.ReadTestResults();
 
             Console.WriteLine("\nПредыдущие результаты пользователей:");
             Console.WriteLine(TableSeparator);
@@ -157,7 +154,7 @@ namespace GeniyIdiotConsoleApp
             {
                 Console.WriteLine(TableRowFormat,
                     result.User.Name,
-                    result.CorrectAnswers,
+                    result.User.RightAnswersCount,
                     result.Diagnosis);
             }
             Console.WriteLine(TableSeparator);

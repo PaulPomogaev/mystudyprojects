@@ -7,8 +7,8 @@ namespace GeniyIdiotConsoleApp
 {
     public class UsersResultStorage
     {
-        private string resultsPath = "results.csv";
-        public void SaveTestResult(TestResult result)
+        private static string resultsPath = "results.csv";
+        public static void SaveTestResult(TestResult result)
         {
             bool needHeader = !File.Exists(resultsPath);
 
@@ -16,17 +16,17 @@ namespace GeniyIdiotConsoleApp
             {
                 if (needHeader)
                 {
-                    writer.WriteLine("Name,CorrectAnswers,Diagnosis");
+                    writer.WriteLine("Name,RightAnswersCount,Diagnosis");
                 }
 
-                writer.WriteLine($"{result.User.Name},{result.CorrectAnswers},{result.Diagnosis}");
+                writer.WriteLine($"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}");
 
             }
         }
 
-        public List<TestResult> ReadTestResults()
+        public static List<TestResult> ReadTestResults()
         {
-           List<TestResult> results = new List<TestResult>();
+            List<TestResult> results = new List<TestResult>();
 
             using (StreamReader reader = new StreamReader(resultsPath))
             {
@@ -44,15 +44,18 @@ namespace GeniyIdiotConsoleApp
                         continue;
                     }
 
-                    if (!int.TryParse(columns[1], out int correctAnswers))
+                    if (!int.TryParse(columns[1].Trim(), out int correctAnswers))
                     {
                         Console.WriteLine($"Некорректное число в строке {line}");
                         continue;
                     }
+
+                    var user = new User(columns[0].Trim());
+                    user.RightAnswersCount = int.Parse(columns[1].Trim());
+
                     results.Add(new TestResult
                     (
-                        new User(columns[0].Trim()),
-                        correctAnswers,
+                        user,
                         columns[2].Trim()
                     ));
                 }
