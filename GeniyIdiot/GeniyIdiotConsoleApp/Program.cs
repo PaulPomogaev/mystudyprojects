@@ -78,7 +78,7 @@ namespace GeniyIdiotConsoleApp
             Console.ReadKey();
         }
 
-         static void AddNewQuestion()
+          static void AddNewQuestion()
         {
             Console.WriteLine("Введите текст вопроса");
             var newQuestionText = Console.ReadLine()?.Trim();
@@ -86,6 +86,8 @@ namespace GeniyIdiotConsoleApp
             var newQuestionAnswer = GetNumber();
 
             var newQuestion = new Question(newQuestionText, newQuestionAnswer);
+
+            QuestionsStorage.Add(newQuestion);
         }
 
         static bool GetUserConfirmation(string question)

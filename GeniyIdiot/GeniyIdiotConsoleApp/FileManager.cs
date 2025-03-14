@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 
@@ -27,6 +28,11 @@ namespace GeniyIdiotConsoleApp
                 }
             }
             return lines;
+        }
+
+       public static bool Exists(string fileName)
+        {
+            return File.Exists(fileName);
         }
     }
 }
