@@ -19,7 +19,7 @@ namespace GeniyIdiotConsoleApp
             do
             {
                 Console.WriteLine($"Здравствуйте, введите своё имя");
-                string name = Console.ReadLine();
+                string name = Console.ReadLine()?.Trim();
                 var user = new User(name);
 
                 List<Question> questions = questionsStorage.GetAllQuestions();
@@ -34,7 +34,7 @@ namespace GeniyIdiotConsoleApp
                     Question currentQuestion = currentTestQuestions[randomQuestionIndex];
                     Console.WriteLine(currentQuestion.Text);
 
-                    int userAnswer = GetUserAnswer();
+                    int userAnswer = GetNumber();
                     int rightAnswer = currentQuestion.Answer;
 
                     if (userAnswer == rightAnswer)
@@ -60,22 +60,41 @@ namespace GeniyIdiotConsoleApp
 
                 UsersResultStorage.SaveTestResult(testResult);
 
-                repeat = TestRepeat();
+                repeat = GetUserConfirmation("Хотите пройти тест ещё раз?");
             } while (repeat);
 
-            if (AskToShowResults())
+            if (GetUserConfirmation("Хотите посмотреть на предыдущие результаты тестирования?"))
             {
                 ShowTestResults();
+            }
+
+            var userChoice = GetUserConfirmation("Хотите добавить новый вопрос?");
+            if(userChoice)
+            {
+                AddNewQuestion();
             }
 
             Console.WriteLine("Спасибо за участие! До свидания!");
             Console.ReadKey();
         }
-        static bool TestRepeat()
+
+          static void AddNewQuestion()
+        {
+            Console.WriteLine("Введите текст вопроса");
+            var newQuestionText = Console.ReadLine()?.Trim();
+            Console.WriteLine("Введите ответ на вопрос");
+            var newQuestionAnswer = GetNumber();
+
+            var newQuestion = new Question(newQuestionText, newQuestionAnswer);
+
+            QuestionsStorage.Add(newQuestion);
+        }
+
+        static bool GetUserConfirmation(string question)
         {
             while (true)
             {
-                Console.WriteLine("Хотите пройти тест ещё раз? (да/нет)");
+                Console.WriteLine($"{question} (да/нет)");
                 var userRespond = Console.ReadLine()?.Trim().ToLower();
                 if (userRespond == "да")
                 {
@@ -88,12 +107,12 @@ namespace GeniyIdiotConsoleApp
                 Console.WriteLine("Введите либо 'да' либо 'нет'!");
             }
         }
-        private static int GetUserAnswer()
+        private static int GetNumber()
         {
             while (true)
             {
                 Console.WriteLine("Введите ответ в виде целого числа");
-                string userAnswer = Console.ReadLine();
+                string userAnswer = Console.ReadLine()?.Trim();
 
                 if (int.TryParse(userAnswer, out int parsedNumber))
                 {
@@ -160,25 +179,5 @@ namespace GeniyIdiotConsoleApp
             Console.WriteLine(TableSeparator);
         }
 
-        static bool AskToShowResults()
-        {
-            while (true)
-            {
-                Console.WriteLine("Показать историю результатов? (да/нет)");
-
-                var userRespond = Console.ReadLine().Trim().ToLower();
-
-                if (userRespond == "да")
-                {
-                    return true;
-                }
-                if (userRespond == "нет")
-                {
-                    return false;
-                }
-
-                Console.WriteLine("Введите либо 'да' либо 'нет'!");
-            }
-        }
-    }
+     }
 }
