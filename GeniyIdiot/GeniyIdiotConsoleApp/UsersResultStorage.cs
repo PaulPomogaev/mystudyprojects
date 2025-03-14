@@ -7,35 +7,37 @@ namespace GeniyIdiotConsoleApp
 {
     public class UsersResultStorage
     {
-        private static string resultsPath = "results.csv";
+        static string resultsPath = "results.csv";
         public static void SaveTestResult(TestResult result)
         {
             bool needHeader = !File.Exists(resultsPath);
 
-            using (StreamWriter writer = new StreamWriter(resultsPath, true))
+            if (needHeader)
             {
-                if (needHeader)
-                {
-                    writer.WriteLine("Name,RightAnswersCount,Diagnosis");
-                }
-
-                writer.WriteLine($"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}");
-
+                FileManager.Append(resultsPath, "Name,CorrectAnswers,Diagnosis");
             }
+
+            var value = $"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}";
+            FileManager.Append(resultsPath, value);
         }
 
         public static List<TestResult> ReadTestResults()
         {
             List<TestResult> results = new List<TestResult>();
 
-            using (StreamReader reader = new StreamReader(resultsPath))
-            {
-                reader.ReadLine();
+            var lines = FileManager.GetValue(resultsPath);
 
-                string line;
+            bool isHeaderSkipped = false;
 
-                while ((line = reader.ReadLine()) != null)
+                
+                foreach(var line in lines)
                 {
+                     if (!isHeaderSkipped)
+                     {
+                         isHeaderSkipped = true;
+                         continue;
+                     }
+
                     string[] columns = line.Split(',');
 
                     if (columns.Length != 3)
@@ -44,12 +46,11 @@ namespace GeniyIdiotConsoleApp
                         continue;
                     }
 
-                    if (!int.TryParse(columns[1].Trim(), out int correctAnswers))
+                    if (!int.TryParse(columns[1], out int correctAnswers))
                     {
                         Console.WriteLine($"Некорректное число в строке {line}");
                         continue;
                     }
-
                     var user = new User(columns[0].Trim());
                     user.RightAnswersCount = int.Parse(columns[1].Trim());
 
@@ -59,7 +60,7 @@ namespace GeniyIdiotConsoleApp
                         columns[2].Trim()
                     ));
                 }
-            }
+            
             return results;
         }
     }
