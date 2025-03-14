@@ -34,5 +34,10 @@ namespace GeniyIdiotConsoleApp
         {
             return File.Exists(fileName);
         }
+
+        internal static void Clear(string fileName)
+        {
+            File.WriteAllText(fileName, string.Empty);
+        }
     }
 }

@@ -14,15 +14,14 @@ namespace GeniyIdiotConsoleApp
         static void Main(string[] args)
         { 
             bool repeat;
-            var questionsStorage = new QuestionsStorage();
-           
+                       
             do
             {
                 Console.WriteLine($"Здравствуйте, введите своё имя");
                 string name = Console.ReadLine()?.Trim();
                 var user = new User(name);
 
-                List<Question> questions = questionsStorage.GetAllQuestions();
+                List<Question> questions = QuestionsStorage.GetAllQuestions();
                 List<Question> currentTestQuestions = new List<Question>(questions);
 
                 var random = new Random();
@@ -74,11 +73,37 @@ namespace GeniyIdiotConsoleApp
                 AddNewQuestion();
             }
 
+            userChoice = GetUserConfirmation("Хотите удалить существующий вопрос?");
+            if (userChoice)
+            {
+                RemoveQuestion();
+            }
+
             Console.WriteLine("Спасибо за участие! До свидания!");
             Console.ReadKey();
         }
 
-          static void AddNewQuestion()
+        static void RemoveQuestion()
+        {
+            Console.WriteLine("Введите номер удаляемого вопроса");
+            var questions = QuestionsStorage.GetAllQuestions();
+            for (var i = 0; i < questions.Count; i++)
+            {
+                Console.WriteLine($"{i + 1}. {questions[i].Text}");
+            }
+            var removeQuestionNumber = GetNumber();
+            while(removeQuestionNumber < 1 || removeQuestionNumber > questions.Count)
+            {
+                Console.WriteLine($"Введите число от 1 до {questions.Count}");
+                removeQuestionNumber = GetNumber();
+            }
+
+            var removeQuestion = questions[removeQuestionNumber - 1];
+            QuestionsStorage.Remove(removeQuestion);
+        }
+        
+
+        static void AddNewQuestion()
         {
             Console.WriteLine("Введите текст вопроса");
             var newQuestionText = Console.ReadLine()?.Trim();
