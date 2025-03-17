@@ -43,6 +43,7 @@
             nextButton.TabIndex = 0;
             nextButton.Text = "Далее";
             nextButton.UseVisualStyleBackColor = true;
+            nextButton.Click += nextButton_Click;
             // 
             // questionNumberLabel
             // 
@@ -70,6 +71,7 @@
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(403, 23);
             userAnswerTextBox.TabIndex = 3;
+            userAnswerTextBox.TextChanged += userAnswerTextBox_TextChanged;
             // 
             // mainForm
             // 
