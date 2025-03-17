@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace GeniyIdiotConsoleApp
+namespace GeniyIdiotClassLibrary
 {
     public class QuestionsStorage
     {

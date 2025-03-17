@@ -1,4 +1,4 @@
-﻿namespace GeniyIdiotConsoleApp
+﻿namespace GeniyIdiotClassLibrary
 {
     public class User
     {

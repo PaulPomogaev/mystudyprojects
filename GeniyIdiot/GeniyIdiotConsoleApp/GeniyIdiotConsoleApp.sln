@@ -5,6 +5,10 @@ VisualStudioVersion = 17.13.35825.156
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotConsoleApp", "GeniyIdiotConsoleApp.csproj", "{2DD916AA-AF30-9490-A09B-14F5B292C543}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotClassLibrary", "..\GeniyIdiotClassLibrary\GeniyIdiotClassLibrary.csproj", "{D18C602D-1773-4089-9803-F4C79E2BD33D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeniyIdiotWinFormsApp", "..\GeniyIdiotWinFormsApp\GeniyIdiotWinFormsApp.csproj", "{F05E925E-4896-4D7E-A13D-1957C539EC34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{2DD916AA-AF30-9490-A09B-14F5B292C543}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2DD916AA-AF30-9490-A09B-14F5B292C543}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2DD916AA-AF30-9490-A09B-14F5B292C543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D18C602D-1773-4089-9803-F4C79E2BD33D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D18C602D-1773-4089-9803-F4C79E2BD33D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D18C602D-1773-4089-9803-F4C79E2BD33D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D18C602D-1773-4089-9803-F4C79E2BD33D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F05E925E-4896-4D7E-A13D-1957C539EC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F05E925E-4896-4D7E-A13D-1957C539EC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F05E925E-4896-4D7E-A13D-1957C539EC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F05E925E-4896-4D7E-A13D-1957C539EC34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
