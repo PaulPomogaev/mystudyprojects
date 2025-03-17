@@ -33,7 +33,7 @@ namespace GeniyIdiotWinFormsApp
 
         private void userAnswerTextBox_TextChanged(object sender, EventArgs e)
         {
-            var userAnswer = 
+            var userAnswer = GetAnswer();
         }
     }
 }
