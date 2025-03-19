@@ -37,7 +37,7 @@
             // nextButton
             // 
             nextButton.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            nextButton.Location = new Point(27, 162);
+            nextButton.Location = new Point(27, 181);
             nextButton.Name = "nextButton";
             nextButton.Size = new Size(285, 127);
             nextButton.TabIndex = 0;
@@ -71,13 +71,12 @@
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(403, 23);
             userAnswerTextBox.TabIndex = 3;
-            //userAnswerTextBox.TextChanged += userAnswerTextBox_TextChanged;
             // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(625, 422);
+            ClientSize = new Size(625, 339);
             Controls.Add(userAnswerTextBox);
             Controls.Add(questionTextLabel);
             Controls.Add(questionNumberLabel);
