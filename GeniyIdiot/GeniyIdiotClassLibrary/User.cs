@@ -7,7 +7,13 @@
 
         public User(string name)
         {
-            Name = name;
+            this.Name = name;
+        }
+
+        public User()
+        {
+            Name = "Гость";
+            RightAnswersCount = 0;
         }
 
         public void AcceptRightAnswer()

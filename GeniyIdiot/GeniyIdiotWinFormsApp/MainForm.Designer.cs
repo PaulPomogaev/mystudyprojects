@@ -37,7 +37,7 @@
             // nextButton
             // 
             nextButton.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            nextButton.Location = new Point(115, 177);
+            nextButton.Location = new Point(27, 162);
             nextButton.Name = "nextButton";
             nextButton.Size = new Size(285, 127);
             nextButton.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             questionNumberLabel.AutoSize = true;
             questionNumberLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            questionNumberLabel.Location = new Point(37, 24);
+            questionNumberLabel.Location = new Point(27, 51);
             questionNumberLabel.Name = "questionNumberLabel";
             questionNumberLabel.Size = new Size(100, 21);
             questionNumberLabel.TabIndex = 1;
@@ -59,7 +59,7 @@
             // 
             questionTextLabel.AutoSize = true;
             questionTextLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            questionTextLabel.Location = new Point(37, 61);
+            questionTextLabel.Location = new Point(27, 82);
             questionTextLabel.Name = "questionTextLabel";
             questionTextLabel.Size = new Size(143, 25);
             questionTextLabel.TabIndex = 2;
@@ -67,17 +67,17 @@
             // 
             // userAnswerTextBox
             // 
-            userAnswerTextBox.Location = new Point(37, 106);
+            userAnswerTextBox.Location = new Point(27, 122);
             userAnswerTextBox.Name = "userAnswerTextBox";
             userAnswerTextBox.Size = new Size(403, 23);
             userAnswerTextBox.TabIndex = 3;
-            userAnswerTextBox.TextChanged += userAnswerTextBox_TextChanged;
+            //userAnswerTextBox.TextChanged += userAnswerTextBox_TextChanged;
             // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(492, 332);
+            ClientSize = new Size(625, 422);
             Controls.Add(userAnswerTextBox);
             Controls.Add(questionTextLabel);
             Controls.Add(questionNumberLabel);

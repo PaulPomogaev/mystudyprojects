@@ -127,7 +127,7 @@
                 Console.WriteLine("Введите либо 'да' либо 'нет'!");
             }
         }
-        private static int GetNumber()
+        static int GetNumber()
         {
             while (true)
             {
