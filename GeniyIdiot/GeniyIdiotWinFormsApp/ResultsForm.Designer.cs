@@ -35,19 +35,20 @@
             // resultsDataGridView
             // 
             resultsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resultsDataGridView.Location = new Point(54, 12);
+            resultsDataGridView.Location = new Point(30, 12);
             resultsDataGridView.Name = "resultsDataGridView";
-            resultsDataGridView.Size = new Size(598, 317);
+            resultsDataGridView.Size = new Size(468, 317);
             resultsDataGridView.TabIndex = 0;
             // 
             // ResultsForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(547, 450);
             Controls.Add(resultsDataGridView);
             Name = "ResultsForm";
             Text = "Form1";
+            Load += ResultsForm_Load;
             ((System.ComponentModel.ISupportInitialize)resultsDataGridView).EndInit();
             ResumeLayout(false);
         }

@@ -11,56 +11,26 @@ namespace GeniyIdiotWinFormsApp
         private int totalQuestionsCount;
         private User user;
         private int questionNumber;
-        private bool isTestStarted = false;
+        private string userName;
+
         public mainForm()
         {
             InitializeComponent();
-            this.KeyPreview = true;
-            userNameTextBox.Focus();
-            userNameLabel.Visible = true;
-            userNameTextBox.Visible = true;
-            questionTextLabel.Visible = false;
-            userAnswerTextBox.Visible = false;
-            nextButton.Visible = false;
-            resultsDataGridView.Visible = false;
-            questionNumberLabel.Visible = false;
         }
 
 
         private void mainForm_Load(object sender, EventArgs e)
         {
-
-            questions = QuestionsStorage.GetAllQuestions();
-            totalQuestionsCount = questions.Count;
-        }
-
-
-        private void userNameTextBox_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter && !isTestStarted)
+            var wellcomeForm = new WellcomeForm();
+            if (wellcomeForm.ShowDialog() != DialogResult.OK)
             {
-                StartTest();
-                e.Handled = true;
-            }
-        }
-
-        private void StartTest()
-        {
-            if (string.IsNullOrWhiteSpace(userNameTextBox.Text))
-            {
-                MessageBox.Show("Введите ваше имя перед началом теста!");
+                Close(); 
                 return;
             }
-
-            user = new User(userNameTextBox.Text.Trim());
-            isTestStarted = true;
-
-            userNameLabel.Visible = false;
-            userNameTextBox.Visible = false;
-
-            questionTextLabel.Visible = true;
-            userAnswerTextBox.Visible = true;
-            nextButton.Visible = true;
+            userName = wellcomeForm.UserName;
+            user = new User(userName);
+            questions = QuestionsStorage.GetAllQuestions();
+            totalQuestionsCount = questions.Count;
 
             ShowNextQuestion();
         }
@@ -133,13 +103,8 @@ namespace GeniyIdiotWinFormsApp
         {
             questions = QuestionsStorage.GetAllQuestions();
             totalQuestionsCount = questions.Count;
-            user = new User(userNameTextBox.Text.Trim());
+            user = new User(userName);
             questionNumber = 0;
-
-            resultsDataGridView.Visible = false;
-            questionTextLabel.Visible = true;
-            userAnswerTextBox.Visible = true;
-            nextButton.Visible = true;
 
             ShowNextQuestion();
         }

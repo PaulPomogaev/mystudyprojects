@@ -1,12 +1,5 @@
 ﻿using GeniyIdiotClassLibrary;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace GeniyIdiotWinFormsApp
@@ -16,41 +9,37 @@ namespace GeniyIdiotWinFormsApp
         public ResultsForm()
         {
             InitializeComponent();
-            resultsDataGridView.AutoGenerateColumns = false;
+
+        }
+
+        private void ResultsForm_Load(object sender, EventArgs e)
+        {
+            ConfigureDataGridViewColumns();
             LoadResults();
+        }
+
+        private void ConfigureDataGridViewColumns()
+        {
+            resultsDataGridView.Columns.Add("Name", "ФИО");
+            resultsDataGridView.Columns.Add("CorrectAnswers", "Кол-во правильных ответов");
+            resultsDataGridView.Columns.Add("Diagnosis", "Диагноз");
         }
 
         private void LoadResults()
         {
             var results = UsersResultStorage.ReadTestResults();
-            resultsDataGridView.Columns.Clear();
+            resultsDataGridView.Rows.Clear();
 
-            resultsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
+            foreach (var result in results)
             {
-                HeaderText = "ФИО",
-                DataPropertyName = "ФИО" 
-            });
 
-            resultsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Кол-во правильных ответов",
-                DataPropertyName = "Кол_во_правильных_ответов"
-            });
-
-            resultsDataGridView.Columns.Add(new DataGridViewTextBoxColumn
-            {
-                HeaderText = "Диагноз",
-                DataPropertyName = "Диагноз"
-            });
-
-            resultsDataGridView.DataSource = results.Select(r => new
-            {
-                ФИО = r.User.Name,
-                Кол_во_правильных_ответов = r.User.RightAnswersCount,
-                Диагноз = r.Diagnosis
-            }).ToList();
+                resultsDataGridView.Rows.Add(
+                    result.User.Name,
+                    result.User.RightAnswersCount,
+                    result.Diagnosis
+                );
+            }
         }
 
-       
-    }
+     }
 }

@@ -32,9 +32,6 @@
             questionNumberLabel = new Label();
             questionTextLabel = new Label();
             userAnswerTextBox = new TextBox();
-            userNameTextBox = new TextBox();
-            userNameLabel = new Label();
-            resultsDataGridView = new DataGridView();
             fileToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem1 = new ToolStripMenuItem();
@@ -42,7 +39,6 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             resultsToolStripMenuItem = new ToolStripMenuItem();
             showHistoryToolStripMenuItem = new ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)resultsDataGridView).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -84,33 +80,6 @@
             userAnswerTextBox.Size = new Size(403, 23);
             userAnswerTextBox.TabIndex = 3;
             // 
-            // userNameTextBox
-            // 
-            userNameTextBox.AccessibleRole = AccessibleRole.None;
-            userNameTextBox.Location = new Point(420, 53);
-            userNameTextBox.Name = "userNameTextBox";
-            userNameTextBox.Size = new Size(173, 23);
-            userNameTextBox.TabIndex = 4;
-            userNameTextBox.KeyPress += userNameTextBox_KeyPress_1;
-            // 
-            // userNameLabel
-            // 
-            userNameLabel.AutoSize = true;
-            userNameLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            userNameLabel.Location = new Point(218, 51);
-            userNameLabel.Name = "userNameLabel";
-            userNameLabel.Size = new Size(158, 21);
-            userNameLabel.TabIndex = 5;
-            userNameLabel.Text = "Введите ваше имя:";
-            // 
-            // resultsDataGridView
-            // 
-            resultsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resultsDataGridView.Location = new Point(353, 167);
-            resultsDataGridView.Name = "resultsDataGridView";
-            resultsDataGridView.Size = new Size(240, 150);
-            resultsDataGridView.TabIndex = 6;
-            // 
             // fileToolStripMenuItem
             // 
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -135,14 +104,14 @@
             // restartToolStripMenuItem
             // 
             restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            restartToolStripMenuItem.Size = new Size(180, 22);
+            restartToolStripMenuItem.Size = new Size(155, 22);
             restartToolStripMenuItem.Text = "Перезапустить";
             restartToolStripMenuItem.Click += restartToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(155, 22);
             exitToolStripMenuItem.Text = "Выход";
             exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
             // 
@@ -156,7 +125,7 @@
             // showHistoryToolStripMenuItem
             // 
             showHistoryToolStripMenuItem.Name = "showHistoryToolStripMenuItem";
-            showHistoryToolStripMenuItem.Size = new Size(180, 22);
+            showHistoryToolStripMenuItem.Size = new Size(176, 22);
             showHistoryToolStripMenuItem.Text = "Показать историю";
             showHistoryToolStripMenuItem.Click += showHistoryToolStripMenuItem_Click;
             // 
@@ -165,9 +134,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(625, 339);
-            Controls.Add(resultsDataGridView);
-            Controls.Add(userNameLabel);
-            Controls.Add(userNameTextBox);
             Controls.Add(userAnswerTextBox);
             Controls.Add(questionTextLabel);
             Controls.Add(questionNumberLabel);
@@ -177,7 +143,6 @@
             Name = "mainForm";
             Text = "Гений Идиот";
             Load += mainForm_Load;
-            ((System.ComponentModel.ISupportInitialize)resultsDataGridView).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -190,9 +155,6 @@
         private Label questionNumberLabel;
         private Label questionTextLabel;
         private TextBox userAnswerTextBox;
-        private TextBox userNameTextBox;
-        private Label userNameLabel;
-        private DataGridView resultsDataGridView;
         private ToolStripMenuItem fileToolStripMenuItem;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem fileToolStripMenuItem1;
