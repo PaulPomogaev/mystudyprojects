@@ -102,11 +102,7 @@ namespace GeniyIdiotWinFormsApp
             }
 
             userAnswerTextBox.Clear();
-
-            if (questions.Count == 0)
-                EndTest();
-            else
-                ShowNextQuestion();
+            ShowNextQuestion();
         }
 
 
