@@ -1,5 +1,5 @@
 using GeniyIdiotClassLibrary;
-using static GeniyIdiotClassLibrary.Class1;
+using static GeniyIdiotClassLibrary.Program;
 
 
 namespace GeniyIdiotWinFormsApp
@@ -11,23 +11,59 @@ namespace GeniyIdiotWinFormsApp
         private int totalQuestionsCount;
         private User user;
         private int questionNumber;
+        private bool isTestStarted = false;
         public mainForm()
         {
             InitializeComponent();
+            this.KeyPreview = true;
+            userNameTextBox.Focus();
+            userNameLabel.Visible = true;
+            userNameTextBox.Visible = true;
+            questionTextLabel.Visible = false;
+            userAnswerTextBox.Visible = false;
+            nextButton.Visible = false;
+            resultsDataGridView.Visible = false;
+            questionNumberLabel.Visible = false;
         }
 
-        
+
         private void mainForm_Load(object sender, EventArgs e)
         {
 
             questions = QuestionsStorage.GetAllQuestions();
             totalQuestionsCount = questions.Count;
-            user = new User();
-            questionNumber = 0;
-            ShowNextQuestion();
         }
 
 
+        private void userNameTextBox_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter && !isTestStarted)
+            {
+                StartTest();
+                e.Handled = true;
+            }
+        }
+
+        private void StartTest()
+        {
+            if (string.IsNullOrWhiteSpace(userNameTextBox.Text))
+            {
+                MessageBox.Show("Введите ваше имя перед началом теста!");
+                return;
+            }
+
+            user = new User(userNameTextBox.Text.Trim());
+            isTestStarted = true;
+
+            userNameLabel.Visible = false;
+            userNameTextBox.Visible = false;
+
+            questionTextLabel.Visible = true;
+            userAnswerTextBox.Visible = true;
+            nextButton.Visible = true;
+
+            ShowNextQuestion();
+        }
 
         private void ShowNextQuestion()
         {
@@ -72,7 +108,7 @@ namespace GeniyIdiotWinFormsApp
             else
                 ShowNextQuestion();
         }
-        
+
 
         private void EndTest()
         {
@@ -82,7 +118,7 @@ namespace GeniyIdiotWinFormsApp
             var testResult = new TestResult(user, diagnosis);
             UsersResultStorage.SaveTestResult(testResult);
 
-            MessageBox.Show($"{user.Name}, ваш диагноз: {diagnosis}");
+            MessageBox.Show($"{user.Name}, Кол-во правильных ответов: {user.RightAnswersCount}, Диагноз: {diagnosis}");
 
             var result = MessageBox.Show("Хотите пройти тест ещё раз?", "Повторить тест",
                                        MessageBoxButtons.YesNo);
@@ -101,11 +137,33 @@ namespace GeniyIdiotWinFormsApp
         {
             questions = QuestionsStorage.GetAllQuestions();
             totalQuestionsCount = questions.Count;
-            user = new User();
+            user = new User(userNameTextBox.Text.Trim());
             questionNumber = 0;
+
+            resultsDataGridView.Visible = false;
+            questionTextLabel.Visible = true;
+            userAnswerTextBox.Visible = true;
+            nextButton.Visible = true;
+
             ShowNextQuestion();
         }
 
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void showHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var resultsForm = new ResultsForm();
+            resultsForm.ShowDialog();
+        }
     }
 }
+    
+
