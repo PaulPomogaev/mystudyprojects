@@ -1,5 +1,5 @@
 using GeniyIdiotClassLibrary;
-using static GeniyIdiotClassLibrary.Class1;
+using static GeniyIdiotClassLibrary.Program;
 
 
 namespace GeniyIdiotWinFormsApp
@@ -16,7 +16,6 @@ namespace GeniyIdiotWinFormsApp
             InitializeComponent();
         }
 
-        
         private void mainForm_Load(object sender, EventArgs e)
         {
 
@@ -26,8 +25,6 @@ namespace GeniyIdiotWinFormsApp
             questionNumber = 0;
             ShowNextQuestion();
         }
-
-
 
         private void ShowNextQuestion()
         {
@@ -66,11 +63,7 @@ namespace GeniyIdiotWinFormsApp
             }
 
             userAnswerTextBox.Clear();
-
-            if (questions.Count == 0)
-                EndTest();
-            else
-                ShowNextQuestion();
+            ShowNextQuestion();
         }
         
 

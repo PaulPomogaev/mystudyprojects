@@ -1,6 +1,6 @@
 ﻿namespace GeniyIdiotClassLibrary
 {
-    public class Class1
+    public class Program
     {
         private const string TableRowFormat = "| {0, -30} | {1, 25} | {2, -10} |";
 
