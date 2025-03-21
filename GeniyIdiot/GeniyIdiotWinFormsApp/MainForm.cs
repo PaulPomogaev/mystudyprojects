@@ -75,7 +75,6 @@ namespace GeniyIdiotWinFormsApp
             ShowNextQuestion();
         }
 
-
         private void EndTest()
         {
             var diagnosisCalculator = new DiagnosesCalculation();
