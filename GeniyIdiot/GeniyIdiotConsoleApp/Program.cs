@@ -4,7 +4,6 @@ using System.Xml.Linq;
 using GeniyIdiot.Common;
 
 
-
 namespace GeniyIdiotConsoleApp
 {
     public static class Program
