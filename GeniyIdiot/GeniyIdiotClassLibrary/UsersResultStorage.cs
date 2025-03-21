@@ -3,7 +3,7 @@ using System;
 using System.IO;
 
 
-namespace GeniyIdiotClassLibrary
+namespace GeniyIdiot.Common
 {
     public class UsersResultStorage
     {

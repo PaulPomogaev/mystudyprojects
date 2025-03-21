@@ -1,4 +1,4 @@
-using GeniyIdiotClassLibrary;
+using GeniyIdiot.Common;
 using static GeniyIdiotConsoleApp.Program;
 
 

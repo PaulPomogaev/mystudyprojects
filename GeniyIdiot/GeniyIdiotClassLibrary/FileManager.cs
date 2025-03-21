@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 
 
-namespace GeniyIdiotClassLibrary
+namespace GeniyIdiot.Common
 {
     public class FileManager
     {

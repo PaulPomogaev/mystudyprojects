@@ -1,6 +1,4 @@
-﻿using GeniyIdiotClassLibrary;
-using System;
-using System.Windows.Forms;
+﻿using GeniyIdiot.Common;
 
 namespace GeniyIdiotWinFormsApp
 {
