@@ -1,5 +1,5 @@
 using GeniyIdiotClassLibrary;
-using static GeniyIdiotClassLibrary.Program;
+using static GeniyIdiotConsoleApp.Program;
 
 
 namespace GeniyIdiotWinFormsApp

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GeniyIdiotClassLibrary\GeniyIdiotClassLibrary.csproj" />
+    <ProjectReference Include="..\GeniyIdiotConsoleApp\GeniyIdiotConsoleApp.csproj" />
   </ItemGroup>
 
 </Project>
