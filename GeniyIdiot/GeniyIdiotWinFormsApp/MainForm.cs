@@ -17,8 +17,6 @@ namespace GeniyIdiotWinFormsApp
         {
             InitializeComponent();
         }
-
-
         private void mainForm_Load(object sender, EventArgs e)
         {
             var wellcomeForm = new WellcomeForm();
