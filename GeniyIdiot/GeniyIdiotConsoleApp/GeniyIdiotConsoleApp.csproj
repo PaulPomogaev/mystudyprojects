@@ -6,6 +6,6 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GeniyIdiotClassLibrary\GeniyIdiotClassLibrary.csproj" />
+    <ProjectReference Include="..\GeniyIdiotClassLibrary\GeniyIdiot.Common.csproj" />
   </ItemGroup>
 </Project>

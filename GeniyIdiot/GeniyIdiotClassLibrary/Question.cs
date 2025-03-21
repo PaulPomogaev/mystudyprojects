@@ -1,4 +1,4 @@
-﻿namespace GeniyIdiotClassLibrary
+﻿namespace GeniyIdiot.Common
 {
     public class Question
     {
