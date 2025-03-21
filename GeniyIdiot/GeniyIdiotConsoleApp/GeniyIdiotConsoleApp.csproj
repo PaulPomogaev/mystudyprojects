@@ -1,15 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-<<<<<<< HEAD
-	  <TargetFramework>net8.0-windows</TargetFramework>
-=======
-	  <TargetFramework>net8.0-windows7.0</TargetFramework>
->>>>>>> ppomogaev_lesson4_2
-    <ImplicitUsings>disable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GeniyIdiotClassLibrary\GeniyIdiot.Common.csproj" />
-  </ItemGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net8.0-windows7.0</TargetFramework>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\GeniyIdiotClassLibrary\GeniyIdiot.Common.csproj" />
+	</ItemGroup>
 </Project>
