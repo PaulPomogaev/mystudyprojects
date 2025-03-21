@@ -7,7 +7,7 @@ using GeniyIdiotClassLibrary;
 
 namespace GeniyIdiotConsoleApp
 {
-    internal class Program
+    public static class Program
     {
         private const string TableRowFormat = "| {0, -30} | {1, 25} | {2, -10} |";
 
