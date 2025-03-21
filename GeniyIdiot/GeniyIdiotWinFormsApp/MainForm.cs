@@ -11,18 +11,25 @@ namespace GeniyIdiotWinFormsApp
         private int totalQuestionsCount;
         private User user;
         private int questionNumber;
+        private string userName;
+
         public mainForm()
         {
             InitializeComponent();
         }
-
         private void mainForm_Load(object sender, EventArgs e)
         {
-
+            var wellcomeForm = new WellcomeForm();
+            if (wellcomeForm.ShowDialog() != DialogResult.OK)
+            {
+                Close(); 
+                return;
+            }
+            userName = wellcomeForm.UserName;
+            user = new User(userName);
             questions = QuestionsStorage.GetAllQuestions();
             totalQuestionsCount = questions.Count;
-            user = new User();
-            questionNumber = 0;
+
             ShowNextQuestion();
         }
 
@@ -65,7 +72,6 @@ namespace GeniyIdiotWinFormsApp
             userAnswerTextBox.Clear();
             ShowNextQuestion();
         }
-        
 
         private void EndTest()
         {
@@ -75,7 +81,7 @@ namespace GeniyIdiotWinFormsApp
             var testResult = new TestResult(user, diagnosis);
             UsersResultStorage.SaveTestResult(testResult);
 
-            MessageBox.Show($"{user.Name}, ваш диагноз: {diagnosis}");
+            MessageBox.Show($"{user.Name}, Кол-во правильных ответов: {user.RightAnswersCount}, Диагноз: {diagnosis}");
 
             var result = MessageBox.Show("Хотите пройти тест ещё раз?", "Повторить тест",
                                        MessageBoxButtons.YesNo);
@@ -94,11 +100,28 @@ namespace GeniyIdiotWinFormsApp
         {
             questions = QuestionsStorage.GetAllQuestions();
             totalQuestionsCount = questions.Count;
-            user = new User();
+            user = new User(userName);
             questionNumber = 0;
+
             ShowNextQuestion();
         }
 
+        private void restartToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
 
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void showHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var resultsForm = new ResultsForm();
+            resultsForm.ShowDialog();
+        }
     }
 }
+    
+

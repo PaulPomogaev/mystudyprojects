@@ -32,6 +32,14 @@
             questionNumberLabel = new Label();
             questionTextLabel = new Label();
             userAnswerTextBox = new TextBox();
+            fileToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
+            fileToolStripMenuItem1 = new ToolStripMenuItem();
+            restartToolStripMenuItem = new ToolStripMenuItem();
+            exitToolStripMenuItem = new ToolStripMenuItem();
+            resultsToolStripMenuItem = new ToolStripMenuItem();
+            showHistoryToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // nextButton
@@ -72,6 +80,55 @@
             userAnswerTextBox.Size = new Size(403, 23);
             userAnswerTextBox.TabIndex = 3;
             // 
+            // fileToolStripMenuItem
+            // 
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new Size(32, 19);
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem1, resultsToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(625, 24);
+            menuStrip1.TabIndex = 7;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem1
+            // 
+            fileToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { restartToolStripMenuItem, exitToolStripMenuItem });
+            fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
+            fileToolStripMenuItem1.Size = new Size(48, 20);
+            fileToolStripMenuItem1.Text = "Файл";
+            // 
+            // restartToolStripMenuItem
+            // 
+            restartToolStripMenuItem.Name = "restartToolStripMenuItem";
+            restartToolStripMenuItem.Size = new Size(155, 22);
+            restartToolStripMenuItem.Text = "Перезапустить";
+            restartToolStripMenuItem.Click += restartToolStripMenuItem_Click;
+            // 
+            // exitToolStripMenuItem
+            // 
+            exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            exitToolStripMenuItem.Size = new Size(155, 22);
+            exitToolStripMenuItem.Text = "Выход";
+            exitToolStripMenuItem.Click += exitToolStripMenuItem_Click;
+            // 
+            // resultsToolStripMenuItem
+            // 
+            resultsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { showHistoryToolStripMenuItem });
+            resultsToolStripMenuItem.Name = "resultsToolStripMenuItem";
+            resultsToolStripMenuItem.Size = new Size(81, 20);
+            resultsToolStripMenuItem.Text = "Результаты";
+            // 
+            // showHistoryToolStripMenuItem
+            // 
+            showHistoryToolStripMenuItem.Name = "showHistoryToolStripMenuItem";
+            showHistoryToolStripMenuItem.Size = new Size(176, 22);
+            showHistoryToolStripMenuItem.Text = "Показать историю";
+            showHistoryToolStripMenuItem.Click += showHistoryToolStripMenuItem_Click;
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -81,9 +138,13 @@
             Controls.Add(questionTextLabel);
             Controls.Add(questionNumberLabel);
             Controls.Add(nextButton);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "mainForm";
             Text = "Гений Идиот";
             Load += mainForm_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -94,5 +155,12 @@
         private Label questionNumberLabel;
         private Label questionTextLabel;
         private TextBox userAnswerTextBox;
+        private ToolStripMenuItem fileToolStripMenuItem;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem fileToolStripMenuItem1;
+        private ToolStripMenuItem restartToolStripMenuItem;
+        private ToolStripMenuItem exitToolStripMenuItem;
+        private ToolStripMenuItem resultsToolStripMenuItem;
+        private ToolStripMenuItem showHistoryToolStripMenuItem;
     }
 }

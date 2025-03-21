@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using System.Xml.Linq;
 using GeniyIdiot.Common;
+<<<<<<< HEAD
+=======
+
+>>>>>>> ppomogaev_lesson4_2
 
 
 namespace GeniyIdiotConsoleApp
