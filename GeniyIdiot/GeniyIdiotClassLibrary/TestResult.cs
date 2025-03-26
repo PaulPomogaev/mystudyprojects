@@ -10,5 +10,8 @@
             User = name;
             Diagnosis = diagnosis;
         }
+
+        public TestResult() { }
+        
     }
 }
