@@ -12,8 +12,7 @@
 
         public User()
         {
-            Name = "Гость";
-            RightAnswersCount = 0;
+            
         }
 
         public void AcceptRightAnswer()

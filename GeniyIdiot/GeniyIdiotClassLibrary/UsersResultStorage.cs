@@ -1,66 +1,31 @@
 ﻿using System.Collections.Generic;
 using System;
 using System.IO;
-
+using System.Text.Json;
 
 namespace GeniyIdiot.Common
 {
     public class UsersResultStorage
     {
-        static string resultsPath = "results.csv";
+        private static string resultsPath = "results.json";
         public static void SaveTestResult(TestResult result)
         {
-            bool needHeader = !File.Exists(resultsPath);
-
-            if (needHeader)
-            {
-                FileManager.Append(resultsPath, "Name,CorrectAnswers,Diagnosis");
-            }
-
-            var value = $"{result.User.Name},{result.User.RightAnswersCount},{result.Diagnosis}";
-            FileManager.Append(resultsPath, value);
+            var results = ReadTestResults();
+            results.Add(result);
+            var json = JsonSerializer.Serialize(results);
+            FileManager.WriteAllText(resultsPath, json);
         }
 
         public static List<TestResult> ReadTestResults()
         {
-            List<TestResult> results = new List<TestResult>();
+            var json = FileManager.ReadAllText(resultsPath);
 
-            var lines = FileManager.GetValue(resultsPath);
+            if (!FileManager.Exists(resultsPath) || string.IsNullOrWhiteSpace(json))
+            {
+                return new List<TestResult>();
+            }
 
-            bool isHeaderSkipped = false;
-
-                
-                foreach(var line in lines)
-                {
-                     if (!isHeaderSkipped)
-                     {
-                         isHeaderSkipped = true;
-                         continue;
-                     }
-
-                    string[] columns = line.Split(',');
-
-                    if (columns.Length != 3)
-                    {
-                        Console.WriteLine($"Ошибка в строке {line} недостаточное количество колонок");
-                        continue;
-                    }
-
-                    if (!int.TryParse(columns[1], out int correctAnswers))
-                    {
-                        Console.WriteLine($"Некорректное число в строке {line}");
-                        continue;
-                    }
-                    var user = new User(columns[0].Trim());
-                    user.RightAnswersCount = int.Parse(columns[1].Trim());
-
-                    results.Add(new TestResult
-                    (
-                        user,
-                        columns[2].Trim()
-                    ));
-                }
-            
+           var results = JsonSerializer.Deserialize<List<TestResult>>(json);
             return results;
         }
     }
