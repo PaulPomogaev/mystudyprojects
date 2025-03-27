@@ -39,6 +39,7 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             resultsToolStripMenuItem = new ToolStripMenuItem();
             showHistoryToolStripMenuItem = new ToolStripMenuItem();
+            manageQuestionsToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -87,7 +88,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem1, resultsToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem1, resultsToolStripMenuItem, manageQuestionsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(625, 24);
@@ -129,6 +130,13 @@
             showHistoryToolStripMenuItem.Text = "Показать историю";
             showHistoryToolStripMenuItem.Click += showHistoryToolStripMenuItem_Click;
             // 
+            // manageQuestionsToolStripMenuItem
+            // 
+            manageQuestionsToolStripMenuItem.Name = "manageQuestionsToolStripMenuItem";
+            manageQuestionsToolStripMenuItem.Size = new Size(150, 20);
+            manageQuestionsToolStripMenuItem.Text = "Управление вопросами";
+            manageQuestionsToolStripMenuItem.Click += manageQuestionsToolStripMenuItem_Click;
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -162,5 +170,6 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem resultsToolStripMenuItem;
         private ToolStripMenuItem showHistoryToolStripMenuItem;
+        private ToolStripMenuItem manageQuestionsToolStripMenuItem;
     }
 }

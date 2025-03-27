@@ -22,7 +22,7 @@ namespace GeniyIdiotWinFormsApp
             var wellcomeForm = new WellcomeForm();
             if (wellcomeForm.ShowDialog() != DialogResult.OK)
             {
-                Close(); 
+                Close();
                 return;
             }
             userName = wellcomeForm.UserName;
@@ -120,6 +120,13 @@ namespace GeniyIdiotWinFormsApp
         {
             var resultsForm = new ResultsForm();
             resultsForm.ShowDialog();
+        }
+
+        private void manageQuestionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var manageForm = new ManageQuestionsForm();
+            manageForm.ShowDialog();
+            questions = QuestionsStorage.GetAllQuestions();
         }
     }
 }
