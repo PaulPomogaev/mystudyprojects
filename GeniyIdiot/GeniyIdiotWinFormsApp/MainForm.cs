@@ -12,11 +12,21 @@ namespace GeniyIdiotWinFormsApp
         private User user;
         private int questionNumber;
         private string userName;
+        private int timeLeft = 10;
+        private const int TotalTime = 10;
 
         public mainForm()
         {
             InitializeComponent();
+            ConfigureProgressBar();
         }
+
+        private void ConfigureProgressBar()
+        {
+            timeProgressBar.Style = ProgressBarStyle.Continuous;
+            timeProgressBar.ForeColor = Color.Green;
+        }
+
         private void mainForm_Load(object sender, EventArgs e)
         {
             var wellcomeForm = new WellcomeForm();
@@ -35,6 +45,11 @@ namespace GeniyIdiotWinFormsApp
 
         private void ShowNextQuestion()
         {
+            questionTimer.Stop();
+            timeLeft = TotalTime;
+            timeProgressBar.Value = 100;
+            timerLabel.Text = "10 сек";
+
             if (questions.Count == 0)
             {
                 EndTest();
@@ -48,6 +63,8 @@ namespace GeniyIdiotWinFormsApp
             questions.RemoveAt(randomIndex);
             questionNumber++;
             questionNumberLabel.Text = "Вопрос № " + questionNumber;
+
+            questionTimer.Start();
         }
 
         private void nextButton_Click(object sender, EventArgs e)
@@ -57,6 +74,8 @@ namespace GeniyIdiotWinFormsApp
 
         private void ProcessAnswer()
         {
+            questionTimer.Stop();
+
             int userAnswer;
             if (!int.TryParse(userAnswerTextBox.Text, out userAnswer))
             {
@@ -127,6 +146,25 @@ namespace GeniyIdiotWinFormsApp
             var manageForm = new ManageQuestionsForm();
             manageForm.ShowDialog();
             questions = QuestionsStorage.GetAllQuestions();
+        }
+
+        private void TimeExpired()
+        {
+            userAnswerTextBox.Clear();
+            ShowNextQuestion();
+        }
+
+        private void questionTimer_Tick(object sender, EventArgs e)
+        {
+            timeLeft--;
+            timeProgressBar.Value = timeLeft * 10;
+            timerLabel.Text = $"{timeLeft} сек";
+
+            if (timeLeft <= 0)
+            {
+                questionTimer.Stop();
+                TimeExpired();
+            }
         }
     }
 }
