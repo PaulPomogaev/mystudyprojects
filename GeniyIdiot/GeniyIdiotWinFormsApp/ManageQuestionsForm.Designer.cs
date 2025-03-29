@@ -44,9 +44,9 @@
             // deleteButton
             // 
             deleteButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            deleteButton.Location = new Point(429, 27);
+            deleteButton.Location = new Point(461, 109);
             deleteButton.Name = "deleteButton";
-            deleteButton.Size = new Size(142, 75);
+            deleteButton.Size = new Size(98, 39);
             deleteButton.TabIndex = 1;
             deleteButton.Text = "Удалить";
             deleteButton.UseVisualStyleBackColor = true;
@@ -54,14 +54,14 @@
             // 
             // questionTextBox
             // 
-            questionTextBox.Location = new Point(24, 156);
+            questionTextBox.Location = new Point(24, 191);
             questionTextBox.Name = "questionTextBox";
             questionTextBox.Size = new Size(399, 23);
             questionTextBox.TabIndex = 2;
             // 
             // answerNumericUpDown
             // 
-            answerNumericUpDown.Location = new Point(439, 157);
+            answerNumericUpDown.Location = new Point(439, 191);
             answerNumericUpDown.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
             answerNumericUpDown.Minimum = new decimal(new int[] { 100000, 0, 0, int.MinValue });
             answerNumericUpDown.Name = "answerNumericUpDown";
@@ -72,7 +72,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(154, 132);
+            label1.Location = new Point(153, 167);
             label1.Name = "label1";
             label1.Size = new Size(125, 21);
             label1.TabIndex = 4;
@@ -82,7 +82,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label2.Location = new Point(434, 133);
+            label2.Location = new Point(434, 167);
             label2.Name = "label2";
             label2.Size = new Size(137, 21);
             label2.TabIndex = 5;
@@ -91,9 +91,9 @@
             // addButton
             // 
             addButton.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            addButton.Location = new Point(429, 186);
+            addButton.Location = new Point(445, 220);
             addButton.Name = "addButton";
-            addButton.Size = new Size(142, 69);
+            addButton.Size = new Size(114, 35);
             addButton.TabIndex = 6;
             addButton.Text = "Добавить";
             addButton.UseVisualStyleBackColor = true;
@@ -101,11 +101,12 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { QuestionText, Answer });
             dataGridView1.Location = new Point(24, 12);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(392, 90);
+            dataGridView1.Size = new Size(535, 91);
             dataGridView1.TabIndex = 7;
             // 
             // QuestionText
