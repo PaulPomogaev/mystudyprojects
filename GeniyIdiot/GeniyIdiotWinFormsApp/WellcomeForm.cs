@@ -6,6 +6,7 @@
         public WellcomeForm()
         {
             InitializeComponent();
+            
         }
 
         private void startButton_Click(object sender, EventArgs e)
@@ -16,6 +17,11 @@
                 return;
             }
             this.DialogResult = DialogResult.OK;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

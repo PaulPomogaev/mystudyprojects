@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             nextButton = new Button();
             questionNumberLabel = new Label();
             questionTextLabel = new Label();
@@ -40,6 +41,9 @@
             resultsToolStripMenuItem = new ToolStripMenuItem();
             showHistoryToolStripMenuItem = new ToolStripMenuItem();
             manageQuestionsToolStripMenuItem = new ToolStripMenuItem();
+            questionTimer = new System.Windows.Forms.Timer(components);
+            timeProgressBar = new ProgressBar();
+            timerLabel = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -91,7 +95,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem1, resultsToolStripMenuItem, manageQuestionsToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(625, 24);
+            menuStrip1.Size = new Size(627, 24);
             menuStrip1.TabIndex = 7;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -137,11 +141,35 @@
             manageQuestionsToolStripMenuItem.Text = "Управление вопросами";
             manageQuestionsToolStripMenuItem.Click += manageQuestionsToolStripMenuItem_Click;
             // 
+            // questionTimer
+            // 
+            questionTimer.Interval = 1000;
+            questionTimer.Tick += questionTimer_Tick;
+            // 
+            // timeProgressBar
+            // 
+            timeProgressBar.Location = new Point(27, 334);
+            timeProgressBar.Name = "timeProgressBar";
+            timeProgressBar.Size = new Size(574, 12);
+            timeProgressBar.TabIndex = 8;
+            timeProgressBar.Value = 100;
+            // 
+            // timerLabel
+            // 
+            timerLabel.AutoSize = true;
+            timerLabel.Location = new Point(536, 298);
+            timerLabel.Name = "timerLabel";
+            timerLabel.Size = new Size(40, 15);
+            timerLabel.TabIndex = 9;
+            timerLabel.Text = "10 сек";
+            // 
             // mainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(625, 339);
+            ClientSize = new Size(627, 357);
+            Controls.Add(timerLabel);
+            Controls.Add(timeProgressBar);
             Controls.Add(userAnswerTextBox);
             Controls.Add(questionTextLabel);
             Controls.Add(questionNumberLabel);
@@ -171,5 +199,8 @@
         private ToolStripMenuItem resultsToolStripMenuItem;
         private ToolStripMenuItem showHistoryToolStripMenuItem;
         private ToolStripMenuItem manageQuestionsToolStripMenuItem;
+        private System.Windows.Forms.Timer questionTimer;
+        private ProgressBar timeProgressBar;
+        private Label timerLabel;
     }
 }

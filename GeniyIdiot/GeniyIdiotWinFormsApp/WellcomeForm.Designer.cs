@@ -37,12 +37,15 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(132, 23);
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.ForeColor = SystemColors.ActiveCaptionText;
+            label1.ImageAlign = ContentAlignment.MiddleLeft;
+            label1.Location = new Point(38, 9);
             label1.Name = "label1";
-            label1.Size = new Size(257, 25);
+            label1.Size = new Size(426, 51);
             label1.TabIndex = 0;
-            label1.Text = "Добро пожаловать в игру";
+            label1.Text = "Добро пожаловать в игру\r\nНа ответ даётся 10 сек\r\nЕсли не успеете ответить, то ответ будет засчитан как неверный!\r\n";
+            label1.Click += label1_Click;
             // 
             // label2
             // 
