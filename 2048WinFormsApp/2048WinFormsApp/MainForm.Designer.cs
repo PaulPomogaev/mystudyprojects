@@ -28,21 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
+            label1 = new Label();
+            scoreLabel = new Label();
             SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label1.Location = new Point(207, 41);
+            label1.Name = "label1";
+            label1.Size = new Size(59, 25);
+            label1.TabIndex = 0;
+            label1.Text = "Счёт:";
+            // 
+            // scoreLabel
+            // 
+            scoreLabel.AutoSize = true;
+            scoreLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            scoreLabel.Location = new Point(294, 41);
+            scoreLabel.Name = "scoreLabel";
+            scoreLabel.Size = new Size(23, 25);
+            scoreLabel.TabIndex = 1;
+            scoreLabel.Text = "0";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.WindowFrame;
-            ClientSize = new Size(356, 350);
+            ClientSize = new Size(356, 394);
+            Controls.Add(scoreLabel);
+            Controls.Add(label1);
             Name = "MainForm";
             Text = "2048";
             Load += MainForm_Load;
-            KeyDown += this.MainForm_KeyDown;
+            KeyDown += MainForm_KeyDown;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private Label scoreLabel;
     }
 }
