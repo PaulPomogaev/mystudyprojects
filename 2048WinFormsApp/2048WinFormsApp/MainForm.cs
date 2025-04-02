@@ -64,7 +64,7 @@ namespace _2048WinFormsApp
             var randomNumberLabel = random.Next(emptyCell.Count);
 
             int number;
-            if (random.Next(100) < 90)
+            if (random.Next(100) < 75)
             {
                 number = 2;
             }
