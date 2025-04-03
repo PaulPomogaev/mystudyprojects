@@ -14,7 +14,7 @@ namespace _2048WinFormsApp
             InitializeComponent();
         }
 
-        private void MainForm_Load (object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             InitMap();
             GenerateNumber();
@@ -26,7 +26,7 @@ namespace _2048WinFormsApp
             scoreLabel.Text = score.ToString();
         }
 
-        
+
         private void InitMap()
         {
             labelsMap = new Label[mapSize, mapSize];
@@ -45,11 +45,11 @@ namespace _2048WinFormsApp
         private void GenerateNumber()
         {
             var emptyCell = new List<(int indexRow, int indexColumn)>();
-            for(int i = 0; i < mapSize; i++)
+            for (int i = 0; i < mapSize; i++)
             {
-                for(int j = 0; j < mapSize; j++)
+                for (int j = 0; j < mapSize; j++)
                 {
-                    if (labelsMap[i,j].Text == string.Empty)
+                    if (labelsMap[i, j].Text == string.Empty)
                     {
                         emptyCell.Add((i, j));
                     }
@@ -64,7 +64,7 @@ namespace _2048WinFormsApp
             var randomNumberLabel = random.Next(emptyCell.Count);
 
             int number;
-            if (random.Next(100) < 90)
+            if (random.Next(100) < 75)
             {
                 number = 2;
             }
@@ -74,7 +74,7 @@ namespace _2048WinFormsApp
             }
             var (indexRow, indexColumn) = emptyCell[randomNumberLabel];
             labelsMap[indexRow, indexColumn].Text = number.ToString();
-                                  
+
         }
 
         private Label CreateLabel(int indexRow, int indexColumn)
@@ -92,7 +92,7 @@ namespace _2048WinFormsApp
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.KeyCode == Keys.Right)
+            if (e.KeyCode == Keys.Right)
             {
                 for (int i = 0; i < mapSize; i++)
                 {
@@ -278,6 +278,28 @@ namespace _2048WinFormsApp
 
             GenerateNumber();
             ShowScore();
+        }
+
+        private void рестартToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Restart();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void правилаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+            "Цель игры: собрать плитку 2048, объединяя одинаковые числа.\n" +
+             "Управление: стрелки клавиатуры.\n" +
+             "Каждое движение сдвигает все плитки в выбранном направлении.",
+             "Правила игры",
+              MessageBoxButtons.OK,
+              MessageBoxIcon.Information
+             );
         }
     }
 }
