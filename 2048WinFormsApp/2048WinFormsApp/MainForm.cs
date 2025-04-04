@@ -64,6 +64,8 @@ namespace _2048WinFormsApp
 
         private void InitMap()
         {
+            ClientSize = new Size(30 + 76 * mapSize, 80 + 76 * mapSize);
+
             labelsMap = new Label[mapSize, mapSize];
 
             for (int i = 0; i < mapSize; i++)
