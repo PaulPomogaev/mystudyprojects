@@ -124,6 +124,7 @@ namespace _2048WinFormsApp
             int x = 30 + indexColumn * 76;
             int y = 80 + indexRow * 76;
             label.Location = new Point(x, y);
+
             return label;
         }
 
