@@ -36,6 +36,9 @@
             exitToolStripMenuItem = new ToolStripMenuItem();
             помощьToolStripMenuItem = new ToolStripMenuItem();
             правилаToolStripMenuItem = new ToolStripMenuItem();
+            историяИгрToolStripMenuItem = new ToolStripMenuItem();
+            bestScoreLabel = new Label();
+            label3 = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,7 +64,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gameToolStripMenuItem, помощьToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { gameToolStripMenuItem, помощьToolStripMenuItem, историяИгрToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(356, 24);
@@ -78,14 +81,14 @@
             // restartToolStripMenuItem
             // 
             restartToolStripMenuItem.Name = "restartToolStripMenuItem";
-            restartToolStripMenuItem.Size = new Size(180, 22);
+            restartToolStripMenuItem.Size = new Size(116, 22);
             restartToolStripMenuItem.Text = "Рестарт";
             restartToolStripMenuItem.Click += рестартToolStripMenuItem_Click;
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(180, 22);
+            exitToolStripMenuItem.Size = new Size(116, 22);
             exitToolStripMenuItem.Text = "Выход";
             exitToolStripMenuItem.Click += выходToolStripMenuItem_Click;
             // 
@@ -99,9 +102,36 @@
             // правилаToolStripMenuItem
             // 
             правилаToolStripMenuItem.Name = "правилаToolStripMenuItem";
-            правилаToolStripMenuItem.Size = new Size(180, 22);
+            правилаToolStripMenuItem.Size = new Size(122, 22);
             правилаToolStripMenuItem.Text = "Правила";
             правилаToolStripMenuItem.Click += правилаToolStripMenuItem_Click;
+            // 
+            // историяИгрToolStripMenuItem
+            // 
+            историяИгрToolStripMenuItem.Name = "историяИгрToolStripMenuItem";
+            историяИгрToolStripMenuItem.Size = new Size(88, 20);
+            историяИгрToolStripMenuItem.Text = "История игр";
+            историяИгрToolStripMenuItem.Click += историяИгрToolStripMenuItem_Click;
+            // 
+            // bestScoreLabel
+            // 
+            bestScoreLabel.AutoSize = true;
+            bestScoreLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            bestScoreLabel.Location = new Point(134, 39);
+            bestScoreLabel.Name = "bestScoreLabel";
+            bestScoreLabel.Size = new Size(23, 25);
+            bestScoreLabel.TabIndex = 4;
+            bestScoreLabel.Text = "0";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            label3.Location = new Point(0, 45);
+            label3.Name = "label3";
+            label3.Size = new Size(128, 17);
+            label3.TabIndex = 3;
+            label3.Text = "Лучший результат:";
             // 
             // MainForm
             // 
@@ -109,6 +139,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.WindowFrame;
             ClientSize = new Size(356, 394);
+            Controls.Add(bestScoreLabel);
+            Controls.Add(label3);
             Controls.Add(scoreLabel);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
@@ -132,5 +164,8 @@
         private ToolStripMenuItem exitToolStripMenuItem;
         private ToolStripMenuItem помощьToolStripMenuItem;
         private ToolStripMenuItem правилаToolStripMenuItem;
+        private ToolStripMenuItem историяИгрToolStripMenuItem;
+        private Label bestScoreLabel;
+        private Label label3;
     }
 }
