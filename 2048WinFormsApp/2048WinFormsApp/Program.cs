@@ -17,7 +17,7 @@ namespace _2048WinFormsApp
             {
                 if (welcomeForm.ShowDialog() == DialogResult.OK)
                 {
-                    // Если пользователь ввел имя, запускаем MainForm
+                   
                     Application.Run(new MainForm()
                     {
                         UserName = welcomeForm.PlayerName
