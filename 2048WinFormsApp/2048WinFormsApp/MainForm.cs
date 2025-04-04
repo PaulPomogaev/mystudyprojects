@@ -5,14 +5,15 @@ namespace _2048WinFormsApp
     public partial class MainForm : Form
     {
         private Label[,] labelsMap;
-        private const int mapSize = 4;
+        private int mapSize;
         private static Random random = new Random();
         private int score = 0;
         private int bestScore = 0;
         public string UserName { get; set; }
 
-        public MainForm()
+        public MainForm(int gridSize)
         {
+            mapSize = gridSize;
             InitializeComponent();
         }
 
