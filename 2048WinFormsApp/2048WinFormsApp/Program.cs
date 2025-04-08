@@ -17,8 +17,7 @@ namespace _2048WinFormsApp
             {
                 if (welcomeForm.ShowDialog() == DialogResult.OK)
                 {
-                   
-                    Application.Run(new MainForm()
+                    Application.Run(new MainForm(welcomeForm.MapSize)
                     {
                         UserName = welcomeForm.PlayerName
                     });

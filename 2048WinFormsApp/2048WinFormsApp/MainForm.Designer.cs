@@ -46,7 +46,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label1.Location = new Point(207, 41);
+            label1.Location = new Point(192, 55);
             label1.Name = "label1";
             label1.Size = new Size(59, 25);
             label1.TabIndex = 0;
@@ -56,7 +56,7 @@
             // 
             scoreLabel.AutoSize = true;
             scoreLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            scoreLabel.Location = new Point(294, 41);
+            scoreLabel.Location = new Point(257, 55);
             scoreLabel.Name = "scoreLabel";
             scoreLabel.Size = new Size(23, 25);
             scoreLabel.TabIndex = 1;
@@ -117,7 +117,7 @@
             // 
             bestScoreLabel.AutoSize = true;
             bestScoreLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            bestScoreLabel.Location = new Point(134, 39);
+            bestScoreLabel.Location = new Point(257, 24);
             bestScoreLabel.Name = "bestScoreLabel";
             bestScoreLabel.Size = new Size(23, 25);
             bestScoreLabel.TabIndex = 4;
@@ -127,7 +127,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label3.Location = new Point(0, 45);
+            label3.Location = new Point(123, 30);
             label3.Name = "label3";
             label3.Size = new Size(128, 17);
             label3.TabIndex = 3;

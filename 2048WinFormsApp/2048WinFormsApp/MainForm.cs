@@ -5,14 +5,20 @@ namespace _2048WinFormsApp
     public partial class MainForm : Form
     {
         private Label[,] labelsMap;
-        private const int mapSize = 4;
+        private int mapSize;
         private static Random random = new Random();
         private int score = 0;
         private int bestScore = 0;
         public string UserName { get; set; }
+        private const int StartX = 6;
+        private const int StartY = 80;
+        private const int CellSizePlusInterval = 76;
+        private const int CellSize = 70;
 
-        public MainForm()
+
+        public MainForm(int mapSize)
         {
+            this.mapSize = mapSize;
             InitializeComponent();
         }
 
@@ -27,21 +33,9 @@ namespace _2048WinFormsApp
         private void CalculateBestScore()
         {
             var users = UserManager.GetAll();
+            if (users.Count == 0) return;
 
-            if (users.Count == 0)
-            {
-                return;
-            }
-
-            bestScore = users[0].Score;
-            foreach(var user in users)
-            {
-                if (user.Score > bestScore)
-                {
-                    bestScore = user.Score;
-                }
-            }
-
+            bestScore = users.Max(user => user.Score);
             ShowBestScore();
         }
 
@@ -63,6 +57,8 @@ namespace _2048WinFormsApp
 
         private void InitMap()
         {
+            ClientSize = new Size(StartX + CellSizePlusInterval * mapSize, StartY + CellSizePlusInterval * mapSize);
+
             labelsMap = new Label[mapSize, mapSize];
 
             for (int i = 0; i < mapSize; i++)
@@ -116,12 +112,37 @@ namespace _2048WinFormsApp
             var label = new Label();
             label.BackColor = SystemColors.ButtonShadow;
             label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label.Size = new Size(70, 70);
+            label.Size = new Size(CellSize, CellSize);
             label.TextAlign = ContentAlignment.MiddleCenter;
-            int x = 30 + indexColumn * 76;
-            int y = 80 + indexRow * 76;
+            int x = StartX + indexColumn * CellSizePlusInterval;
+            int y = StartY + indexRow * CellSizePlusInterval;
             label.Location = new Point(x, y);
+            label.TextChanged += Label_TextChanged;
             return label;
+        }
+
+        private void Label_TextChanged(object? sender, EventArgs e)
+        {
+            var label = (Label)sender;
+            switch(label.Text)
+            {
+                case "": label.BackColor = Color.FromArgb(205, 193, 180); break;
+                case "2": label.BackColor = Color.FromArgb(238, 228, 218); break;
+                case "4": label.BackColor = Color.FromArgb(237, 224, 200); break;
+                case "8": label.BackColor = Color.FromArgb(242, 177, 121); break;
+                case "16": label.BackColor = Color.FromArgb(245, 149, 99); break;
+                case "32": label.BackColor = Color.FromArgb(246, 124, 95); break;
+                case "64": label.BackColor = Color.FromArgb(246, 94, 59); break;
+                case "128": label.BackColor = Color.FromArgb(237, 207, 114); break;
+                case "256": label.BackColor = Color.FromArgb(237, 204, 97); break;
+                case "512": label.BackColor = Color.FromArgb(237, 200, 80); break;
+                case "1024": label.BackColor = Color.FromArgb(237, 197, 63); break;
+                case "2048": label.BackColor = Color.FromArgb(237, 197, 63); break;
+               
+            }
+           
+
+
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)
