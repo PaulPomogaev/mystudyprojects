@@ -13,7 +13,7 @@ namespace _2048WinFormsApp
     public partial class WelcomeForm : Form
     {
         public string PlayerName { get; private set; }
-        public int GridSize { get; private set; } = 4;
+        public int MapSize { get; private set; } = 4;
 
         public WelcomeForm()
         {
@@ -31,15 +31,15 @@ namespace _2048WinFormsApp
 
             if (radio5x5.Checked)
             {
-                GridSize = 5;
+                MapSize = 5;
             }
             else if (radio6x6.Checked)
             {
-                GridSize = 6;
+                MapSize = 6;
             }
             else if (radio7x7.Checked)
             {
-                GridSize = 7;
+                MapSize = 7;
             }
 
 

@@ -10,10 +10,15 @@ namespace _2048WinFormsApp
         private int score = 0;
         private int bestScore = 0;
         public string UserName { get; set; }
+        private const int StartX = 30;
+        private const int StartY = 80;
+        private const int CellSizePlusInterval = 76;
+        private const int CellSize = 70;
 
-        public MainForm(int gridSize)
+
+        public MainForm(int mapSize)
         {
-            mapSize = gridSize;
+            this.mapSize = mapSize;
             InitializeComponent();
         }
 
@@ -28,21 +33,9 @@ namespace _2048WinFormsApp
         private void CalculateBestScore()
         {
             var users = UserManager.GetAll();
+            if (users.Count == 0) return;
 
-            if (users.Count == 0)
-            {
-                return;
-            }
-
-            bestScore = users[0].Score;
-            foreach(var user in users)
-            {
-                if (user.Score > bestScore)
-                {
-                    bestScore = user.Score;
-                }
-            }
-
+            bestScore = users.Max(user => user.Score);
             ShowBestScore();
         }
 
@@ -64,7 +57,7 @@ namespace _2048WinFormsApp
 
         private void InitMap()
         {
-            ClientSize = new Size(30 + 76 * mapSize, 80 + 76 * mapSize);
+            ClientSize = new Size(StartX + CellSizePlusInterval * mapSize, StartY + CellSizePlusInterval * mapSize);
 
             labelsMap = new Label[mapSize, mapSize];
 
@@ -119,10 +112,10 @@ namespace _2048WinFormsApp
             var label = new Label();
             label.BackColor = SystemColors.ButtonShadow;
             label.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 204);
-            label.Size = new Size(70, 70);
+            label.Size = new Size(CellSize, CellSize);
             label.TextAlign = ContentAlignment.MiddleCenter;
-            int x = 30 + indexColumn * 76;
-            int y = 80 + indexRow * 76;
+            int x = StartX + indexColumn * CellSizePlusInterval;
+            int y = StartY + indexRow * CellSizePlusInterval;
             label.Location = new Point(x, y);
 
             return label;
