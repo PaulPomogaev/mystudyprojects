@@ -11,9 +11,9 @@ namespace _2048WinFormsApp
         private int bestScore = 0;
         public string UserName { get; set; }
 
-        public MainForm(int gridSize)
+        public MainForm(int mapSize)
         {
-            mapSize = gridSize;
+            this.mapSize = mapSize;
             InitializeComponent();
         }
 
