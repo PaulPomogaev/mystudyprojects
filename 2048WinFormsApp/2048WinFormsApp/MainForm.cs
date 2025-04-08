@@ -10,7 +10,7 @@ namespace _2048WinFormsApp
         private int score = 0;
         private int bestScore = 0;
         public string UserName { get; set; }
-        private const int StartX = 30;
+        private const int StartX = 6;
         private const int StartY = 80;
         private const int CellSizePlusInterval = 76;
         private const int CellSize = 70;
