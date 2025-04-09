@@ -29,55 +29,43 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            stopBallsButton = new Button();
             timer = new System.Windows.Forms.Timer(components);
+            createBallsbutton = new Button();
             SuspendLayout();
             // 
-            // button1
+            // stopBallsButton
             // 
-            button1.Location = new Point(546, 12);
-            button1.Name = "button1";
-            button1.Size = new Size(140, 23);
-            button1.TabIndex = 0;
-            button1.Text = "Двигать шарик ";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(360, 12);
-            button2.Name = "button2";
-            button2.Size = new Size(180, 23);
-            button2.TabIndex = 1;
-            button2.Text = "Рисовать случайный шарик";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(546, 41);
-            button3.Name = "button3";
-            button3.Size = new Size(140, 23);
-            button3.TabIndex = 2;
-            button3.Text = "Двигать шарик ";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            stopBallsButton.Location = new Point(546, 41);
+            stopBallsButton.Name = "stopBallsButton";
+            stopBallsButton.Size = new Size(140, 23);
+            stopBallsButton.TabIndex = 2;
+            stopBallsButton.Text = "Остановка";
+            stopBallsButton.UseVisualStyleBackColor = true;
+            stopBallsButton.Click += button3_Click;
             // 
             // timer
             // 
             timer.Interval = 15;
             timer.Tick += timer_Tick;
             // 
+            // createBallsbutton
+            // 
+            createBallsbutton.Location = new Point(400, 41);
+            createBallsbutton.Name = "createBallsbutton";
+            createBallsbutton.Size = new Size(140, 23);
+            createBallsbutton.TabIndex = 3;
+            createBallsbutton.Text = "Создать";
+            createBallsbutton.UseVisualStyleBackColor = true;
+            createBallsbutton.Click += button4_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(698, 370);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
+            Controls.Add(createBallsbutton);
+            Controls.Add(stopBallsButton);
             Name = "MainForm";
             Text = "Мячики";
             MouseDown += MainForm_MouseDown;
@@ -85,10 +73,8 @@
         }
 
         #endregion
-
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button stopBallsButton;
         private System.Windows.Forms.Timer timer;
+        private Button createBallsbutton;
     }
 }
