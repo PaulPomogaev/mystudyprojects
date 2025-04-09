@@ -17,7 +17,12 @@ namespace BallGamesWinFormsApp
         {
             timer = new Timer();
             timer.Interval = 20;
-            timer.Tick += Timer_Tick; 
+            timer.Tick += Timer_Tick;
+
+            vx = random.Next(-5, 6);
+            if (vx == 0) vx = 1;
+            vy = random.Next(-5, 6);
+            if (vy == 0) vy = 1;
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -34,6 +39,11 @@ namespace BallGamesWinFormsApp
         {
             timer.Stop();
             //timer.Enabled = !timer.Enabled;
+        }
+
+        public bool IsCaught()
+        {
+            return x >= 0 && y >= 0 && x + size <= form.ClientSize.Width && y + size <= form.ClientSize.Height;
         }
     }
 }

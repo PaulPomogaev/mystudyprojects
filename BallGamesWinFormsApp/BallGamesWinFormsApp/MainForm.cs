@@ -25,19 +25,26 @@ namespace BallGamesWinFormsApp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            int caughtBallsCount = 0;
+
+            foreach (var ball in moveBalls)
             {
-                moveBalls[i].Stop();
+               ball.Stop();
+                if(ball.IsCaught())
+                {
+                    caughtBallsCount++;
+                }
             }
 
+            MessageBox.Show($"Количество пойманных шариков: {caughtBallsCount}");
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             
-            for (int i = 0; i < 10; i++)
+            foreach (var ball in moveBalls)
             {
-                moveBalls[i].Move();
+                ball.Move();
             }
         }
 

@@ -6,8 +6,8 @@
         protected int x = 150;
         protected int y = 150;
         protected int size = 70;
-        private int vx = 1;
-        private int vy = 1;
+        protected int vx = 1;
+        protected int vy = 1;
         public Ball(MainForm form)
         {
             this.form = form;
