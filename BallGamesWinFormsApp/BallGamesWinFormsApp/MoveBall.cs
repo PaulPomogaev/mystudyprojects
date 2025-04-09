@@ -37,8 +37,8 @@ namespace BallGamesWinFormsApp
 
         public void Stop()
         {
-            timer.Stop();
-            //timer.Enabled = !timer.Enabled;
+            //timer.Stop(); // если использовать его, то выходит только одно нажатие, больше запустить шары не получится
+            timer.Enabled = !timer.Enabled; // при использовании этого инструмента можно несколько раз останавливать и запускать, что удобнее
         }
 
         public bool IsCaught()
