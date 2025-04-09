@@ -8,13 +8,7 @@ namespace BallGamesWinFormsApp
         public MainForm()
         {
             InitializeComponent();
-            DoubleBuffered = true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //timer.Enabled = !timer.Enabled;
-
+            DoubleBuffered = true;  // делает движене шаров плавнее
         }
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
@@ -56,8 +50,7 @@ namespace BallGamesWinFormsApp
                 moveBalls.Add(moveBall);
                 moveBall.Start();
             }
-
-            
+                        
         }
     }
 }
