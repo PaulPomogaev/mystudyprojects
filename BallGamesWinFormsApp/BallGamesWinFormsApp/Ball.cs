@@ -42,6 +42,9 @@
             graphics.FillEllipse(brush, rectangle);
         }
 
-        
+        public bool IsOnForm()
+        {
+            return x >= 0 && y >= 0 && x + size <= form.ClientSize.Width && y + size <= form.ClientSize.Height;
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace BallGamesWinFormsApp
+﻿using System.Drawing;
+using System.Windows.Forms;
+
+namespace BallGamesWinFormsApp
 {
     public partial class MainForm : Form
     {
@@ -24,7 +27,7 @@
             foreach (var ball in moveBalls)
             {
                ball.Stop();
-                if(ball.IsCaught())
+                if(ball.IsOnForm())
                 {
                     caughtBallsCount++;
                 }
@@ -50,7 +53,7 @@
                 moveBalls.Add(moveBall);
                 moveBall.Start();
             }
-                        
         }
+
     }
 }
