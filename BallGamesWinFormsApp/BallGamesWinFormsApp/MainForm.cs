@@ -1,4 +1,4 @@
-namespace BallGamesWinFormsApp
+п»їnamespace BallGamesWinFormsApp
 {
     public partial class MainForm : Form
     {
@@ -8,7 +8,7 @@ namespace BallGamesWinFormsApp
         public MainForm()
         {
             InitializeComponent();
-            DoubleBuffered = true;  // делает движене шаров плавнее
+            DoubleBuffered = true;  // РґРµР»Р°РµС‚ РґРІРёР¶РµРЅРµ С€Р°СЂРѕРІ РїР»Р°РІРЅРµРµ
         }
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
@@ -30,7 +30,7 @@ namespace BallGamesWinFormsApp
                 }
             }
 
-            MessageBox.Show($"Количество пойманных шариков: {caughtBallsCount}");
+            MessageBox.Show($"РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕР№РјР°РЅРЅС‹С… С€Р°СЂРёРєРѕРІ: {caughtBallsCount}");
         }
 
         private void timer_Tick(object sender, EventArgs e)
