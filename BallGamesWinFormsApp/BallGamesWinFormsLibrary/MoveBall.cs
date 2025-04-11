@@ -7,13 +7,15 @@ using System.Windows.Forms;
 using Timer = System.Windows.Forms.Timer;
 
 
-namespace BallGamesWinFormsApp
+namespace BallGamesWinFormsLibrary
 {
     public class MoveBall : RandomPointBall
     {
         private Timer timer;
+        public bool IsStoped { get; set; }
 
-        public MoveBall(MainForm form) : base(form)
+
+        public MoveBall(Form form) : base(form)
         {
             timer = new Timer();
             timer.Interval = 20;
@@ -44,8 +46,9 @@ namespace BallGamesWinFormsApp
 
         public void Stop()
         {
-            //timer.Stop(); // если использовать его, то выходит только одно нажатие, больше запустить шары не получится
-            timer.Enabled = !timer.Enabled; // при использовании этого инструмента можно несколько раз останавливать и запускать, что удобнее
+            timer.Stop(); // если использовать его, то выходит только одно нажатие, больше запустить шары не получится
+                          //timer.Enabled = !timer.Enabled; // при использовании этого инструмента можно несколько раз останавливать и запускать, что удобнее
+            IsStoped = true;
         }
 
     }

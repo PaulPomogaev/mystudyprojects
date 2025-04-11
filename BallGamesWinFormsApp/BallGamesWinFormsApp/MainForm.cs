@@ -1,12 +1,13 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using BallGamesWinFormsLibrary;
 
 namespace BallGamesWinFormsApp
 {
     public partial class MainForm : Form
     {
         List <MoveBall> moveBalls = new List<MoveBall>();
-        PointBall pointBall;
+        PointBall? pointBall;
 
         public MainForm()
         {
