@@ -17,7 +17,19 @@ namespace BallGamesWinFormsApp
         {
             timer = new Timer();
             timer.Interval = 20;
-            timer.Tick += Timer_Tick; 
+            timer.Tick += Timer_Tick;
+
+            vx = random.Next(-5, 6);
+            if (vx == 0)
+            {
+                vx = 1;
+            }
+
+            vy = random.Next(-5, 6);
+            if (vy == 0)
+            {
+                vy = 1;
+            }
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -32,8 +44,9 @@ namespace BallGamesWinFormsApp
 
         public void Stop()
         {
-            timer.Stop();
-            //timer.Enabled = !timer.Enabled;
+            //timer.Stop(); // если использовать его, то выходит только одно нажатие, больше запустить шары не получится
+            timer.Enabled = !timer.Enabled; // при использовании этого инструмента можно несколько раз останавливать и запускать, что удобнее
         }
+
     }
 }

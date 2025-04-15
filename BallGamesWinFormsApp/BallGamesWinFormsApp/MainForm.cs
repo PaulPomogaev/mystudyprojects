@@ -1,3 +1,6 @@
+﻿using System.Drawing;
+using System.Windows.Forms;
+
 namespace BallGamesWinFormsApp
 {
     public partial class MainForm : Form
@@ -8,13 +11,7 @@ namespace BallGamesWinFormsApp
         public MainForm()
         {
             InitializeComponent();
-            DoubleBuffered = true;
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //timer.Enabled = !timer.Enabled;
-
+            DoubleBuffered = true;  // делает движене шаров плавнее
         }
 
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
@@ -25,19 +22,26 @@ namespace BallGamesWinFormsApp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
+            int caughtBallsCount = 0;
+
+            foreach (var ball in moveBalls)
             {
-                moveBalls[i].Stop();
+               ball.Stop();
+                if(ball.IsOnForm())
+                {
+                    caughtBallsCount++;
+                }
             }
 
+            MessageBox.Show($"Количество пойманных шариков: {caughtBallsCount}");
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             
-            for (int i = 0; i < 10; i++)
+            foreach (var ball in moveBalls)
             {
-                moveBalls[i].Move();
+                ball.Move();
             }
         }
 
@@ -49,8 +53,7 @@ namespace BallGamesWinFormsApp
                 moveBalls.Add(moveBall);
                 moveBall.Start();
             }
-
-            
         }
+
     }
 }
