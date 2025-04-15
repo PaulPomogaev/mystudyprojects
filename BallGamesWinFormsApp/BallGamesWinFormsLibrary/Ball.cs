@@ -8,7 +8,7 @@ namespace BallGamesWinFormsLibrary
         private Timer timer;
         protected int centerX = 150;
         protected int centerY = 150;
-        protected int radius = 35;
+        protected int radius = 25;
         protected int vx = 1;
         protected int vy = 1;
         public bool IsStoped { get; set; }
