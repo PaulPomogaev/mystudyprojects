@@ -32,7 +32,7 @@ namespace BallGamesWinFormsApp2
         {
             foreach (var ball in moveBalls)
             {
-                if (!ball.IsStoped && ball.Contains(e.X, e.Y))
+                if (!ball.IsStoped && ball.Exists(e.X, e.Y))
                 {
                     ball.Stop();
                     caughtCount++;

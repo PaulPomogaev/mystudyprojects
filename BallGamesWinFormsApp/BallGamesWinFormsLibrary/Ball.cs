@@ -1,25 +1,46 @@
-﻿namespace BallGamesWinFormsLibrary
+﻿using Timer = System.Windows.Forms.Timer;
+
+namespace BallGamesWinFormsLibrary
 {
     public class Ball
     {
         protected Form form;
-        protected int x = 150;
-        protected int y = 150;
-        protected int size = 70;
+        private Timer timer;
+        protected int centerX = 150;
+        protected int centerY = 150;
+        protected int radius = 35;
         protected int vx = 1;
         protected int vy = 1;
+        public bool IsStoped { get; set; }
 
         public Ball(Form form)
         {
             this.form = form;
+            timer = new Timer();
+            timer.Interval = 20;
+            timer.Tick += Timer_Tick;
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            Move();
+        }
+        public void Start()
+        {
+            timer.Start();
+        }
+
+        public void Stop()
+        {
+            timer.Stop(); // если использовать его, то выходит только одно нажатие, больше запустить шары не получится
+                          //timer.Enabled = !timer.Enabled; // при использовании этого инструмента можно несколько раз останавливать и запускать, что удобнее
+            IsStoped = true;
         }
 
         public void Show()
         {
-            var graphics = form.CreateGraphics();
             var brush = Brushes.Aqua;
-            var rectangle = new Rectangle(x, y, size, size);
-            graphics.FillEllipse(brush, rectangle);
+            Draw(brush);
         }
 
         public void Move()
@@ -29,32 +50,54 @@
             Show();
         }
 
-        private void Go()
+        public int LeftSide()
         {
-            x += vx;
-            y += vy;
+            return radius;
+        }
+
+        public int RightSide()
+        {
+            return form.ClientSize.Width - radius;
+        }
+
+        public int TopSide()
+        {
+            return radius;
+        }
+
+        public int DownSide()
+        {
+            return form.ClientSize.Height - radius; ;
+        }
+
+        protected virtual void Go()
+        {
+            centerX += vx;
+            centerY += vy;
+                        
         }
 
         public void Clear()
         {
-            var graphics = form.CreateGraphics();
-            var brush = new SolidBrush(form.BackColor);
-            var rectangle = new Rectangle(x, y, size, size);
-            graphics.FillEllipse(brush, rectangle);
+           var brush = new SolidBrush(form.BackColor);
+           Draw(brush);
         }
 
         public bool IsOnForm()
         {
-            return x >= 0 && y >= 0 && x + size <= form.ClientSize.Width && y + size <= form.ClientSize.Height;
+            return centerX >= LeftSide() && centerX <= RightSide() && centerY >= TopSide() && centerY <= DownSide();
         }
 
-        public bool Contains(int pointX, int pointY)
+        public bool Exists(int pointX, int pointY)
         {
-            var radius = size / 2;
-            var centerX = x + radius;
-            var centerY = y + radius;
+                return (centerX - pointX) * (centerX - pointX) + (centerY - pointY) * (centerY - pointY) <= radius * radius;
+        }
 
-            return (centerX - pointX) * (centerX - pointX) + (centerY - pointY) * (centerY - pointY) <= radius * radius;
+        private void Draw(Brush brush)
+        {
+            var graphics = form.CreateGraphics();
+            var rectangle = new Rectangle(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+            graphics.FillEllipse(brush, rectangle);
         }
     }
 }
