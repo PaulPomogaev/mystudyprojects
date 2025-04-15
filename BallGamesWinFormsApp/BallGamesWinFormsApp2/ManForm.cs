@@ -51,8 +51,8 @@ namespace BallGamesWinFormsApp2
         {
             foreach (var ball in moveBalls)
             {
-                ball.Clear(); 
-
+                ball.Stop();
+                ball.Clear();
             }
 
             caughtCount = 0;
