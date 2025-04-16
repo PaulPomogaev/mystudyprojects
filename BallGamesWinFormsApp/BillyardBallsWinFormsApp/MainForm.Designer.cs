@@ -32,6 +32,8 @@
             rightLabel = new Label();
             topLabel = new Label();
             downLabel = new Label();
+            createBallButton = new Button();
+            stopButton = new Button();
             SuspendLayout();
             // 
             // leftLabel
@@ -74,18 +76,39 @@
             downLabel.TabIndex = 3;
             downLabel.Text = "0";
             // 
+            // createBallButton
+            // 
+            createBallButton.Location = new Point(557, 12);
+            createBallButton.Name = "createBallButton";
+            createBallButton.Size = new Size(75, 23);
+            createBallButton.TabIndex = 4;
+            createBallButton.Text = "Шарики";
+            createBallButton.UseVisualStyleBackColor = true;
+            createBallButton.Click += createBallButton_Click;
+            // 
+            // stopButton
+            // 
+            stopButton.Location = new Point(557, 41);
+            stopButton.Name = "stopButton";
+            stopButton.Size = new Size(75, 23);
+            stopButton.TabIndex = 5;
+            stopButton.Text = "Стоп";
+            stopButton.UseVisualStyleBackColor = true;
+            stopButton.Click += stopButton_Click;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(655, 359);
+            Controls.Add(stopButton);
+            Controls.Add(createBallButton);
             Controls.Add(downLabel);
             Controls.Add(topLabel);
             Controls.Add(rightLabel);
             Controls.Add(leftLabel);
             Name = "MainForm";
             Text = "Form1";
-            Load += MainForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -96,5 +119,7 @@
         private Label rightLabel;
         private Label topLabel;
         private Label downLabel;
+        private Button createBallButton;
+        private Button stopButton;
     }
 }
