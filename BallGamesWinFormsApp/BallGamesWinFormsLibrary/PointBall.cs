@@ -4,8 +4,8 @@
     {
         public PointBall(Form form, int x, int y) : base(form)
         {
-            this.centerX = x - 70 / 2;
-            this.centerY = y - 70 / 2;
+            this.centerX = x - size / 2;
+            this.centerY = y - size / 2;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace BillyardBallsWinFormsApp
     public class BillyardBall : MoveBall
     {
         public event EventHandler<HitEventArgs> OnHited;
-        public BillyardBall(Form form) : base(form)
+        public BillyardBall(Form form, Brush brush) : base(form, brush)
         {
         }
 

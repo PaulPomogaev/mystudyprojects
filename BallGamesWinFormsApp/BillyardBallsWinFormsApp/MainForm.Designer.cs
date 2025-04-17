@@ -34,12 +34,17 @@
             downLabel = new Label();
             createBallButton = new Button();
             stopButton = new Button();
+            topLabel2 = new Label();
+            rightLabel2 = new Label();
+            downLabel2 = new Label();
+            leftLabel2 = new Label();
             SuspendLayout();
             // 
             // leftLabel
             // 
             leftLabel.AutoSize = true;
             leftLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            leftLabel.ForeColor = SystemColors.HotTrack;
             leftLabel.Location = new Point(12, 173);
             leftLabel.Name = "leftLabel";
             leftLabel.Size = new Size(15, 17);
@@ -50,6 +55,7 @@
             // 
             rightLabel.AutoSize = true;
             rightLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            rightLabel.ForeColor = SystemColors.Highlight;
             rightLabel.Location = new Point(628, 173);
             rightLabel.Name = "rightLabel";
             rightLabel.Size = new Size(15, 17);
@@ -60,6 +66,7 @@
             // 
             topLabel.AutoSize = true;
             topLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            topLabel.ForeColor = Color.DodgerBlue;
             topLabel.Location = new Point(313, 9);
             topLabel.Name = "topLabel";
             topLabel.Size = new Size(15, 17);
@@ -70,6 +77,7 @@
             // 
             downLabel.AutoSize = true;
             downLabel.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            downLabel.ForeColor = SystemColors.HotTrack;
             downLabel.Location = new Point(313, 333);
             downLabel.Name = "downLabel";
             downLabel.Size = new Size(15, 17);
@@ -96,11 +104,60 @@
             stopButton.UseVisualStyleBackColor = true;
             stopButton.Click += stopButton_Click;
             // 
+            // topLabel2
+            // 
+            topLabel2.AutoSize = true;
+            topLabel2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            topLabel2.ForeColor = Color.Red;
+            topLabel2.Location = new Point(334, 9);
+            topLabel2.Name = "topLabel2";
+            topLabel2.Size = new Size(15, 17);
+            topLabel2.TabIndex = 6;
+            topLabel2.Text = "0";
+           
+            // 
+            // rightLabel2
+            // 
+            rightLabel2.AutoSize = true;
+            rightLabel2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            rightLabel2.ForeColor = Color.Red;
+            rightLabel2.Location = new Point(628, 201);
+            rightLabel2.Name = "rightLabel2";
+            rightLabel2.Size = new Size(15, 17);
+            rightLabel2.TabIndex = 7;
+            rightLabel2.Text = "0";
+            // 
+            // downLabel2
+            // 
+            downLabel2.AutoSize = true;
+            downLabel2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            downLabel2.ForeColor = Color.Red;
+            downLabel2.Location = new Point(334, 333);
+            downLabel2.Name = "downLabel2";
+            downLabel2.Size = new Size(15, 17);
+            downLabel2.TabIndex = 8;
+            downLabel2.Text = "0";
+            // 
+            // leftLabel2
+            // 
+            leftLabel2.AutoSize = true;
+            leftLabel2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            leftLabel2.ForeColor = Color.Red;
+            leftLabel2.Location = new Point(12, 201);
+            leftLabel2.Name = "leftLabel2";
+            leftLabel2.Size = new Size(15, 17);
+            leftLabel2.TabIndex = 9;
+            leftLabel2.Text = "0";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(655, 359);
+            Controls.Add(leftLabel2);
+            Controls.Add(downLabel2);
+            Controls.Add(rightLabel2);
+            Controls.Add(topLabel2);
             Controls.Add(stopButton);
             Controls.Add(createBallButton);
             Controls.Add(downLabel);
@@ -121,5 +178,9 @@
         private Label downLabel;
         private Button createBallButton;
         private Button stopButton;
+        private Label topLabel2;
+        private Label rightLabel2;
+        private Label downLabel2;
+        private Label leftLabel2;
     }
 }
