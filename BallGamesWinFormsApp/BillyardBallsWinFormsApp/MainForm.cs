@@ -24,6 +24,7 @@ namespace BillyardBallsWinFormsApp
 
         private void Timer_Tick(object? sender, EventArgs e)
         {
+            ShowVerticalCenterLine();
             int leftOfCenterBlueCount = 0;
             int rightOfCenterBlueCount = 0;
 
@@ -32,9 +33,9 @@ namespace BillyardBallsWinFormsApp
 
             foreach (var ball in balls)
             {
-                if(ball.LeftOfCenter())
+                if (ball.LeftOfCenter())
                 {
-                    if(ball.GetBrush() == Brushes.Red)
+                    if (ball.GetBrush() == Brushes.Red)
                     {
                         leftOfCenterRedCount++;
                     }
@@ -42,7 +43,7 @@ namespace BillyardBallsWinFormsApp
                     {
                         leftOfCenterBlueCount++;
                     }
-                    
+
                 }
 
                 if (ball.RightOfCenter())
@@ -108,7 +109,7 @@ namespace BillyardBallsWinFormsApp
 
         private void createBallButton_Click(object sender, EventArgs e)
         {
-            ShowVerticalCenterLine();
+            
             balls.Clear();
 
             for (int i = 0; i < ballCount / 2; i++)
@@ -139,5 +140,6 @@ namespace BillyardBallsWinFormsApp
             }
         }
 
+       
     }
 }

@@ -114,7 +114,6 @@
             topLabel2.Size = new Size(15, 17);
             topLabel2.TabIndex = 6;
             topLabel2.Text = "0";
-           
             // 
             // rightLabel2
             // 
