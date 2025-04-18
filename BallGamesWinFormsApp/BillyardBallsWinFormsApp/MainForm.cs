@@ -60,7 +60,7 @@ namespace BillyardBallsWinFormsApp
                 }
 
             }
-            if (rightOfCenterBlueCount == leftOfCenterBlueCount && rightOfCenterRedCount == leftOfCenterRedCount && rightOfCenterBlueCount + leftOfCenterBlueCount + rightOfCenterRedCount + leftOfCenterRedCount == ballCount)
+            if (rightOfCenterBlueCount == leftOfCenterBlueCount && rightOfCenterRedCount == leftOfCenterRedCount && rightOfCenterBlueCount + leftOfCenterBlueCount + rightOfCenterRedCount + leftOfCenterRedCount == ballCount && leftOfCenterRedCount == rightOfCenterBlueCount)
             {
                 foreach (var ball in balls)
                 {
