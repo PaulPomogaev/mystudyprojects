@@ -28,6 +28,12 @@ namespace BallGamesWinFormsLibrary
             this.form = form;
             this.brush = brush;
         }
+
+        public Brush GetBrush()
+        {
+            return brush;
+        }
+
         private void Timer_Tick(object? sender, EventArgs e)
         {
             Move();
