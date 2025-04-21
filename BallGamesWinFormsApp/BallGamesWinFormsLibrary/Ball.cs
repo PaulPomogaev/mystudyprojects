@@ -8,12 +8,12 @@ namespace BallGamesWinFormsLibrary
         private Timer timer;
         protected int centerX = 150;
         protected int centerY = 150;
-        protected int Size { get; set; } = 50;
-        protected int radius;
+        protected static int size = 70;
+        protected int radius = size / 2;
         protected int vx = 1;
         protected int vy = 1;
+        protected Brush brush = Brushes.Aqua;
         public bool IsStoped { get; set; }
-        
 
         public Ball(Form form)
         {
@@ -21,7 +21,17 @@ namespace BallGamesWinFormsLibrary
             timer = new Timer();
             timer.Interval = 20;
             timer.Tick += Timer_Tick;
-            radius = Size / 2;
+        }
+
+        public Ball(Form form, Brush brush)
+        {
+            this.form = form;
+            this.brush = brush;
+        }
+
+        public Brush GetBrush()
+        {
+            return brush;
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
@@ -42,7 +52,7 @@ namespace BallGamesWinFormsLibrary
 
         public void Show()
         {
-            var brush = Brushes.Aqua;
+            //var brush = Brushes.Aqua;
             Draw(brush);
         }
 

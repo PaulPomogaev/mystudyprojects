@@ -12,7 +12,7 @@ namespace BallGamesWinFormsLibrary
     public class MoveBall : RandomPointBall
     {
         
-        public MoveBall(Form form) : base(form)
+        public MoveBall(Form form, Brush brush) : base(form)
         {
             vx = random.Next(-5, 6);
             if (vx == 0)
@@ -25,6 +25,8 @@ namespace BallGamesWinFormsLibrary
             {
                 vy = 1;
             }
+
+            this.brush = brush;
         }
                       
     }
