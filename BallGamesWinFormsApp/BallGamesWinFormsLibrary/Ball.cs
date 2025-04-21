@@ -8,8 +8,8 @@ namespace BallGamesWinFormsLibrary
         private Timer timer;
         protected int centerX = 150;
         protected int centerY = 150;
-        protected static int size = 50;
-        protected int radius = size / 2;
+        protected int Size { get; set; } = 50;
+        protected int radius => Size / 2;
         protected int vx = 1;
         protected int vy = 1;
         public bool IsStoped { get; set; }
