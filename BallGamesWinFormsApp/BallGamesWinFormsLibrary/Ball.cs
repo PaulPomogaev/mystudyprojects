@@ -9,7 +9,7 @@ namespace BallGamesWinFormsLibrary
         protected int centerX = 150;
         protected int centerY = 150;
         protected int Size { get; set; } = 50;
-        protected int radius => Size / 2;
+        protected int radius;
         protected int vx = 1;
         protected int vy = 1;
         public bool IsStoped { get; set; }
@@ -21,6 +21,7 @@ namespace BallGamesWinFormsLibrary
             timer = new Timer();
             timer.Interval = 20;
             timer.Tick += Timer_Tick;
+            radius = Size / 2;
         }
 
         private void Timer_Tick(object? sender, EventArgs e)
