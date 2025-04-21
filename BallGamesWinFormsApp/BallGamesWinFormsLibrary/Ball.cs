@@ -8,8 +8,8 @@ namespace BallGamesWinFormsLibrary
         private Timer timer;
         protected float centerX = 150;
         protected float centerY = 150;
-        protected static int size = 30;
-        protected int radius = size / 2;
+        protected int Size { get; set; }= 10;
+        protected int Radius => Size / 2;
         protected float vx = 1;
         protected float vy = 1;
         protected Brush brush = Brushes.Aqua;
@@ -65,22 +65,22 @@ namespace BallGamesWinFormsLibrary
 
         public int LeftSide()
         {
-            return radius;
+            return Radius;
         }
 
         public int RightSide()
         {
-            return form.ClientSize.Width - radius;
+            return form.ClientSize.Width - Radius;
         }
 
         public int TopSide()
         {
-            return radius;
+            return Radius;
         }
 
         public int DownSide()
         {
-            return form.ClientSize.Height - radius; ;
+            return form.ClientSize.Height - Radius; ;
         }
 
         protected virtual void Go()
@@ -103,13 +103,13 @@ namespace BallGamesWinFormsLibrary
 
         public bool Exists(int pointX, int pointY)
         {
-                return (centerX - pointX) * (centerX - pointX) + (centerY - pointY) * (centerY - pointY) <= radius * radius;
+                return (centerX - pointX) * (centerX - pointX) + (centerY - pointY) * (centerY - pointY) <= Radius * Radius;
         }
 
         private void Draw(Brush brush)
         {
             var graphics = form.CreateGraphics();
-            var rectangle = new RectangleF(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+            var rectangle = new RectangleF(centerX - Radius, centerY - Radius, 2 * Radius, 2 * Radius);
             graphics.FillEllipse(brush, rectangle);
         }
     }

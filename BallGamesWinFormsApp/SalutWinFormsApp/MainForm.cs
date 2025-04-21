@@ -10,7 +10,7 @@ namespace SalutWinFormsApp
         private void MainForm_MouseDown(object sender, MouseEventArgs e)
         {
             var random = new Random();
-            var count = random.Next(1, 11);
+            var count = random.Next(8, 19);
 
             int r = random.Next(256);
             int g = random.Next(256);
@@ -24,5 +24,7 @@ namespace SalutWinFormsApp
                 salut.Start();
             }
         }
+
+
     }
 }
