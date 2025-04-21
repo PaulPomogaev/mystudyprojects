@@ -15,12 +15,12 @@ namespace BillyardBallsWinFormsApp
 
         public bool LeftOfCenter()
         {
-            return centerX + Radius < form.ClientSize.Width / 2;
+            return centerX + radius < form.ClientSize.Width / 2;
         }
 
         public bool RightOfCenter()
         {
-            return centerX - Radius > form.ClientSize.Width / 2;
+            return centerX - radius > form.ClientSize.Width / 2;
         }
 
         protected override void Go()

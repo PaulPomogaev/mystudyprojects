@@ -8,8 +8,8 @@ namespace BallGamesWinFormsLibrary
         private Timer timer;
         protected float centerX = 150;
         protected float centerY = 150;
-        protected int Size { get; set; }= 10;
-        protected int Radius => Size / 2;
+        protected int Size { get; set; } = 10;
+        protected int radius;
         protected float vx = 1;
         protected float vy = 1;
         protected Brush brush = Brushes.Aqua;
@@ -21,6 +21,7 @@ namespace BallGamesWinFormsLibrary
             timer = new Timer();
             timer.Interval = 20;
             timer.Tick += Timer_Tick;
+            radius = Size / 2;
         }
 
         public Ball(Form form, Brush brush)
@@ -65,22 +66,22 @@ namespace BallGamesWinFormsLibrary
 
         public int LeftSide()
         {
-            return Radius;
+            return radius;
         }
 
         public int RightSide()
         {
-            return form.ClientSize.Width - Radius;
+            return form.ClientSize.Width - radius;
         }
 
         public int TopSide()
         {
-            return Radius;
+            return radius;
         }
 
         public int DownSide()
         {
-            return form.ClientSize.Height - Radius; ;
+            return form.ClientSize.Height - radius; ;
         }
 
         protected virtual void Go()
@@ -103,13 +104,13 @@ namespace BallGamesWinFormsLibrary
 
         public bool Exists(int pointX, int pointY)
         {
-                return (centerX - pointX) * (centerX - pointX) + (centerY - pointY) * (centerY - pointY) <= Radius * Radius;
+                return (centerX - pointX) * (centerX - pointX) + (centerY - pointY) * (centerY - pointY) <= radius * radius;
         }
 
         private void Draw(Brush brush)
         {
             var graphics = form.CreateGraphics();
-            var rectangle = new RectangleF(centerX - Radius, centerY - Radius, 2 * Radius, 2 * Radius);
+            var rectangle = new RectangleF(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
             graphics.FillEllipse(brush, rectangle);
         }
     }
