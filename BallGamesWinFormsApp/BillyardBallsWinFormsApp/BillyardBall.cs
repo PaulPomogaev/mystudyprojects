@@ -13,16 +13,6 @@ namespace BillyardBallsWinFormsApp
             this.brush = brush;
         }
 
-        public bool LeftOfCenter()
-        {
-            return centerX + radius < form.ClientSize.Width / 2;
-        }
-
-        public bool RightOfCenter()
-        {
-            return centerX - radius > form.ClientSize.Width / 2;
-        }
-
         protected override void Go()
         {
             base.Go();
