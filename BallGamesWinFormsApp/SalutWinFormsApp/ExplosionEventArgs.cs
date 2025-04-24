@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SalutWinFormsApp
+{
+    public class ExplosionEventArgs : EventArgs
+    {
+        public float X { get; }
+        public float Y { get; }
+
+        public ExplosionEventArgs(float x, float y)
+        {
+            X = x;
+            Y = y;
+        }
+    }
+}
