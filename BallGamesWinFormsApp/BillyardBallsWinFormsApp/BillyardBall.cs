@@ -12,7 +12,7 @@ namespace BillyardBallsWinFormsApp
             centerY = random.Next(TopSide(), DownSide());
             this.brush = brush;
         }
-
+        
         protected override void Go()
         {
             base.Go();

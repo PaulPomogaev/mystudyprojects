@@ -6,12 +6,12 @@ namespace BallGamesWinFormsLibrary
     {
         protected Form form;
         private Timer timer;
-        protected int centerX = 150;
-        protected int centerY = 150;
-        protected static int size = 70;
-        protected int radius = size / 2;
-        protected int vx = 1;
-        protected int vy = 1;
+        protected float centerX = 150;
+        protected float centerY = 150;
+        protected int Size { get; set; } = 10;
+        protected int radius;
+        protected float vx = 1;
+        protected float vy = 1;
         protected Brush brush = Brushes.Aqua;
         public bool IsStoped { get; set; }
 
@@ -21,6 +21,7 @@ namespace BallGamesWinFormsLibrary
             timer = new Timer();
             timer.Interval = 20;
             timer.Tick += Timer_Tick;
+            radius = Size / 2;
         }
 
         public Ball(Form form, Brush brush)
@@ -109,7 +110,7 @@ namespace BallGamesWinFormsLibrary
         private void Draw(Brush brush)
         {
             var graphics = form.CreateGraphics();
-            var rectangle = new Rectangle(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+            var rectangle = new RectangleF(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
             graphics.FillEllipse(brush, rectangle);
         }
 
