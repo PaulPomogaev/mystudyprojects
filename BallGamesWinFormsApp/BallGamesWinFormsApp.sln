@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BillyardBallsWinFormsApp", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SalutWinFormsApp", "SalutWinFormsApp\SalutWinFormsApp.csproj", "{98BBC58C-5F1E-435A-8E34-20D09CB93211}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FruitNinjaWinFormsApp", "FruitNinjaWinFormsApp\FruitNinjaWinFormsApp.csproj", "{B444EC64-BE56-4490-9466-9BEA815B0539}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{98BBC58C-5F1E-435A-8E34-20D09CB93211}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98BBC58C-5F1E-435A-8E34-20D09CB93211}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98BBC58C-5F1E-435A-8E34-20D09CB93211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B444EC64-BE56-4490-9466-9BEA815B0539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B444EC64-BE56-4490-9466-9BEA815B0539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B444EC64-BE56-4490-9466-9BEA815B0539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B444EC64-BE56-4490-9466-9BEA815B0539}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
