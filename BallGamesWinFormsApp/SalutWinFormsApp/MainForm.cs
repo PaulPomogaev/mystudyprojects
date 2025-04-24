@@ -25,14 +25,10 @@ namespace SalutWinFormsApp
 
         private void Rocket_Exploded(object sender, ExplosionEventArgs e)
         {
-            CreateSaluteBalls(e.X, e.Y);
+            GenerateBalls(e.X, e.Y);
         }
 
-        private void CreateSaluteBalls(float x, float y)
-        {
-            GenerateBalls(x, y);
-        }
-
+        
         private void GenerateBalls(float x, float y)
         {
             var random = new Random();
