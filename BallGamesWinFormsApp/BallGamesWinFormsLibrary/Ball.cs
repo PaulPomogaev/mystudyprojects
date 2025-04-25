@@ -14,6 +14,9 @@ namespace BallGamesWinFormsLibrary
         protected float vy = 1;
         protected Brush brush = Brushes.Aqua;
         public bool IsStoped { get; set; }
+        protected float originalVx;
+        protected float originalVy;
+        protected bool isSlowed;
 
         public Ball(Form form)
         {
@@ -134,6 +137,26 @@ namespace BallGamesWinFormsLibrary
         public bool IsMovable()
         {
             return !IsStoped;
+        }
+
+        public void ApplySlowdown(float multiplier)
+        {
+            if (isSlowed) return;
+
+            originalVx = vx;
+            originalVy = vy;
+            vx *= multiplier;
+            vy *= multiplier;
+            isSlowed = true;
+        }
+
+        public void ResetSpeed()
+        {
+            if (!isSlowed) return;
+
+            vx = originalVx;
+            vy = originalVy;
+            isSlowed = false;
         }
     }
 }

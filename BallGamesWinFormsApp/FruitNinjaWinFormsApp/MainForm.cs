@@ -7,6 +7,7 @@ namespace FruitNinjaWinFormsApp
     {
         private static Random random = new Random();
         private Timer timer = new Timer();
+        private Timer slowdownTimer = new Timer();
         private List<FruitBall> fruits = new List<FruitBall>();
 
         public Form1()
@@ -25,8 +26,23 @@ namespace FruitNinjaWinFormsApp
         {
             for (int i = 0; i < random.Next(4, 10); i++)
             {
-                var bombNumber = random.Next(5);
-                var ball = bombNumber == 4 ? new BombBall(this) : new FruitBall(this);
+                var bombNumber = random.Next(6);
+                FruitBall ball;
+
+                if (bombNumber == 4)
+                {
+                    ball = new BombBall(this);
+                }
+                else if (bombNumber == 5)
+                {
+                    ball = new BananaBall(this);
+                }
+                else
+                {
+                    ball = new FruitBall(this);
+                }
+                    
+
                 fruits.Add(ball);
                 ball.Start();
             }
@@ -36,6 +52,8 @@ namespace FruitNinjaWinFormsApp
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
+            List<FruitBall> fruitsToRemove = new List<FruitBall>();
+
             foreach (var fruit in fruits)
             {
                 if (fruit.IsMovable() && fruit.Contains(e.X, e.Y))
@@ -46,20 +64,49 @@ namespace FruitNinjaWinFormsApp
                         EndGame();
                         return;
                     }
+                    else if (fruit is BananaBall)
+                    {
+                        ApplySlowdownToAll(0.3f);
+                    }
 
                     fruit.Clear();
+                    fruitsToRemove.Add(fruit);
                     scoreLabel.Text = (Convert.ToInt32(scoreLabel.Text) + 1).ToString();
                 }
             }
+            foreach (var fruit in fruitsToRemove)
+            {
+                fruits.Remove(fruit);
+            }
+        }
+
+        private void ApplySlowdownToAll(float multiplier)
+        {
+            
+            foreach (var ball in fruits)
+            {
+                if (ball.IsMovable())
+                {
+                    ball.ApplySlowdown(multiplier);
+                }
+            }
+                        
+            slowdownTimer.Stop(); 
+            slowdownTimer.Start(); 
         }
 
         private void EndGame()
         {
+            timer.Stop();
+            slowdownTimer.Stop();
+            
             foreach (var fruit in fruits)
             {
                 fruit.Stop();
             }
             MessageBox.Show("Игра окончена!");
+
+            fruits.Clear();
         }
     }
 }
