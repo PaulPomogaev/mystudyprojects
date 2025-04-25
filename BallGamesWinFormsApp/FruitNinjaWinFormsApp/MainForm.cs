@@ -25,7 +25,8 @@ namespace FruitNinjaWinFormsApp
         {
             for (int i = 0; i < random.Next(4, 10); i++)
             {
-                var ball = new FruitBall(this); // Только фрукты
+                var bombNumber = random.Next(5);
+                var ball = bombNumber == 4 ? new BombBall(this) : new FruitBall(this);
                 fruits.Add(ball);
                 ball.Start();
             }
@@ -40,13 +41,26 @@ namespace FruitNinjaWinFormsApp
                 if (fruit.IsMovable() && fruit.Contains(e.X, e.Y))
                 {
                     fruit.Stop();
+                    if (fruit is BombBall)
+                    {
+                        EndGame();
+                        return;
+                    }
+
                     fruit.Clear();
                     scoreLabel.Text = (Convert.ToInt32(scoreLabel.Text) + 1).ToString();
                 }
             }
         }
 
-        
+        private void EndGame()
+        {
+            foreach (var fruit in fruits)
+            {
+                fruit.Stop();
+            }
+            MessageBox.Show("Игра окончена!");
+        }
     }
 }
 
