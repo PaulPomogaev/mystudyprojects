@@ -123,5 +123,17 @@ namespace BallGamesWinFormsLibrary
         {
             return centerX - radius > form.ClientSize.Width / 2;
         }
+
+        public bool Contains(int x, int y)
+        {
+            float dx = centerX - x;
+            float dy = centerY - y;
+            return dx * dx + dy * dy <= radius * radius;
+        }
+
+        public bool IsMovable()
+        {
+            return !IsStoped;
+        }
     }
 }
