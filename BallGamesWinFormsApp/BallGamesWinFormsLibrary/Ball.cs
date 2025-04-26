@@ -139,7 +139,7 @@ namespace BallGamesWinFormsLibrary
             return !IsStoped;
         }
 
-        public void ApplySlowdown(float multiplier)
+        public virtual void ApplySlowdown(float multiplier)
         {
             if (isSlowed) return;
 
@@ -150,7 +150,7 @@ namespace BallGamesWinFormsLibrary
             isSlowed = true;
         }
 
-        public void ResetSpeed()
+        public virtual void ResetSpeed()
         {
             if (!isSlowed) return;
 

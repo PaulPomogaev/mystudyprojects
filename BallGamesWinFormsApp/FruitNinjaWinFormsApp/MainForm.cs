@@ -13,6 +13,17 @@ namespace FruitNinjaWinFormsApp
         public Form1()
         {
             InitializeComponent();
+            slowdownTimer.Interval = 5000;
+            slowdownTimer.Tick += SlowdownTimer_Tick;
+        }
+
+        private void SlowdownTimer_Tick(object? sender, EventArgs e)
+        {
+            foreach (var ball in fruits)
+            {
+                ball.ResetSpeed(); 
+            }
+            slowdownTimer.Stop();
         }
 
         private void Form1_Load(object sender, EventArgs e)
