@@ -5,17 +5,30 @@ namespace FruitNinjaWinFormsApp
     public class FruitBall : MoveBall
     {
         private float g = 0.2f;
+        private float originalG;
 
         public FruitBall(Form form, Brush brush) : base(form, brush)
         {
             InitializeBall(form);
+            originalG = g;
         }
 
         public FruitBall(Form form) : base(form, CreateRandomBrush())
         {
             InitializeBall(form);
+            originalG = g;
+        }
+        public override void ApplySlowdown(float multiplier)
+        {
+            base.ApplySlowdown(multiplier);
+            g *= multiplier;
         }
 
+        public override void ResetSpeed()
+        {
+            base.ResetSpeed();
+            g = originalG;
+        }
         private void InitializeBall(Form form)
         {
             radius = 15;
