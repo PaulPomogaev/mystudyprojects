@@ -9,7 +9,7 @@ namespace AngryBirdsWinFormsApp
 {
     public class PigBall : Ball
     {
-        protected static Random random = new Random();
+       protected static Random random = new Random();
 
         public PigBall(Form form) : base(form)
         {
@@ -24,5 +24,14 @@ namespace AngryBirdsWinFormsApp
             centerX = random.Next(LeftSide()+50, RightSide()-50);
             centerY = random.Next(TopSide()+50, DownSide()-100);
         }
+        public float GetCenterX()
+        {
+           return centerX;
+        }
+        public float GetCenterY()
+        {
+            return centerY;
+        }
+       
     }
 }

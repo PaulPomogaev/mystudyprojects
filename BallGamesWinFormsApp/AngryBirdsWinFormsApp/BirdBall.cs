@@ -16,6 +16,7 @@ namespace AngryBirdsWinFormsApp
 
         public BirdBall(Form form) : base(form)
         {
+
             centerX = LeftSide() + 20;
             centerY = DownSide() - 20;
             brush = Brushes.Red;
@@ -54,5 +55,22 @@ namespace AngryBirdsWinFormsApp
             vy = 0;
         }
 
+        public float GetVx()
+        {
+            return vx;
+        }
+        public float GetVy()
+        {
+            return vy;
+        }
+        public float GetCenterX()
+        {
+            return centerX;
+        }
+
+        public float GetCenterY()
+        {
+            return centerY;
+        }
     }
 }

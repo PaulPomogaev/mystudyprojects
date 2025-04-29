@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            scoreLabel = new Label();
+            SuspendLayout();
+            // 
+            // scoreLabel
+            // 
+            scoreLabel.AutoSize = true;
+            scoreLabel.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 204);
+            scoreLabel.Location = new Point(24, 14);
+            scoreLabel.Name = "scoreLabel";
+            scoreLabel.Size = new Size(19, 21);
+            scoreLabel.TabIndex = 0;
+            scoreLabel.Text = "0";
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(740, 371);
+            Controls.Add(scoreLabel);
+            Name = "MainForm";
+            Text = "AngryBirds";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label scoreLabel;
     }
 }
