@@ -16,6 +16,43 @@ namespace AngryBirdsWinFormsApp
 
         public BirdBall(Form form) : base(form)
         {
+            centerX = LeftSide() + 20;
+            centerY = DownSide() - 20;
+            brush = Brushes.Red;
+            Size = 20;
+            radius = Size / 2;
         }
+
+        protected override void Go()
+        {
+            base.Go();
+
+            vy += Gravity;
+
+            if (centerY >= DownSide())
+            {
+                centerY = DownSide();
+                vy = -Math.Abs(vy * GroundStrikeEnergyLoss);
+                vx *= GroundFriction;
+
+                if(Math.Abs(vy) < 0.5f)
+                {
+                    vx = 0;
+                    vy = 0;
+                }
+            }
+
+            vx *= AirResistance;
+            vy *= AirResistance;
+        }
+
+        public void ResetPosition()
+        {
+            centerX = LeftSide() + 20;
+            centerY = DownSide() - 20;
+            vx = 0;
+            vy = 0;
+        }
+
     }
 }
