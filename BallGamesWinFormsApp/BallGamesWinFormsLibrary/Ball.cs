@@ -56,8 +56,14 @@ namespace BallGamesWinFormsLibrary
 
         public void Show()
         {
-            //var brush = Brushes.Aqua;
-            Draw(brush);
+            if (form.IsDisposed)
+            {
+                return;
+            }
+            using (var g = form.CreateGraphics())
+            {
+                Draw(g);
+            }
         }
 
         public void Move()
@@ -96,8 +102,18 @@ namespace BallGamesWinFormsLibrary
 
         public void Clear()
         {
-           var brush = new SolidBrush(form.BackColor);
-           Draw(brush);
+            if (form.IsDisposed)
+            {
+                return;
+            }
+
+            using (var g = form.CreateGraphics())
+            {
+                var oldBrush = this.brush;
+                this.brush = new SolidBrush(form.BackColor);
+                Draw(g);
+                this.brush = oldBrush;
+            }
         }
 
         public bool IsOnForm()
@@ -110,9 +126,8 @@ namespace BallGamesWinFormsLibrary
                 return (centerX - pointX) * (centerX - pointX) + (centerY - pointY) * (centerY - pointY) <= radius * radius;
         }
 
-        private void Draw(Brush brush)
+        public virtual void Draw(Graphics graphics)
         {
-            var graphics = form.CreateGraphics();
             var rectangle = new RectangleF(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
             graphics.FillEllipse(brush, rectangle);
         }
@@ -157,6 +172,11 @@ namespace BallGamesWinFormsLibrary
             vx = originalVx;
             vy = originalVy;
             isSlowed = false;
+        }
+
+        public int GetRadius()
+        {
+            return radius;
         }
     }
 }

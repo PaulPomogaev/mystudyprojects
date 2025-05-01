@@ -1,27 +1,30 @@
 ﻿using BallGamesWinFormsLibrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AngryBirdsWinFormsApp
 {
     public class BirdBall : Ball
     {
-        private float Gravity = 0.5f;
-        private float GroundStrikeEnergyLoss = 0.7f;
-        private float AirResistance = 0.99f;
-        private float GroundFriction = 0.8f;
-
+        private float Gravity = 0.3f;
+        private float GroundStrikeEnergyLoss = 0.88f;
+        private float AirResistance = 0.988f;
+        private float GroundFriction = 0.4f;
+        public float GetVx
+        {
+            get { return vx; }
+            set { vx = value; }
+        }
+        public float GetVy
+        {
+            get { return vy; }
+            set { vy = value; }
+        }
         public BirdBall(Form form) : base(form)
         {
 
-            centerX = LeftSide() + 20;
-            centerY = DownSide() - 20;
             brush = Brushes.Red;
-            Size = 20;
+            Size = 30;
             radius = Size / 2;
+            ResetPosition();
         }
 
         protected override void Go()
@@ -36,33 +39,27 @@ namespace AngryBirdsWinFormsApp
                 vy = -Math.Abs(vy * GroundStrikeEnergyLoss);
                 vx *= GroundFriction;
 
-                if(Math.Abs(vy) < 0.5f)
+                if (Math.Abs(vy) < 0.1f && Math.Abs(vx) < 0.1f)
                 {
-                    vx = 0;
                     vy = 0;
+                    vx = 0;
                 }
             }
-
-            vx *= AirResistance;
+                        
             vy *= AirResistance;
+            vx *= AirResistance;
         }
 
         public void ResetPosition()
         {
-            centerX = LeftSide() + 20;
-            centerY = DownSide() - 20;
+            centerX = LeftSide();
+            centerY = DownSide();
             vx = 0;
             vy = 0;
+            Show();
         }
 
-        public float GetVx()
-        {
-            return vx;
-        }
-        public float GetVy()
-        {
-            return vy;
-        }
+        
         public float GetCenterX()
         {
             return centerX;

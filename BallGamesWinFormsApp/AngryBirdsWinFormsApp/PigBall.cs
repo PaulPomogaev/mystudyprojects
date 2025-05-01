@@ -1,9 +1,4 @@
 ﻿using BallGamesWinFormsLibrary;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AngryBirdsWinFormsApp
 {
@@ -13,8 +8,8 @@ namespace AngryBirdsWinFormsApp
 
         public PigBall(Form form) : base(form)
         {
-            brush = Brushes.Red;
-            Size = 30;
+            brush = Brushes.Green;
+            Size = 40;
             radius = Size / 2;
             RandomPosition();
         }

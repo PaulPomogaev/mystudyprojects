@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             scoreLabel = new Label();
+           
             SuspendLayout();
             // 
             // scoreLabel
@@ -40,6 +41,7 @@
             scoreLabel.Size = new Size(19, 21);
             scoreLabel.TabIndex = 0;
             scoreLabel.Text = "0";
+            
             // 
             // MainForm
             // 
@@ -56,5 +58,6 @@
         #endregion
 
         private Label scoreLabel;
+        
     }
 }
