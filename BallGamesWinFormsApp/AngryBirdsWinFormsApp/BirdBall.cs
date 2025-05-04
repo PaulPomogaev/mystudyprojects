@@ -4,10 +4,10 @@ namespace AngryBirdsWinFormsApp
 {
     public class BirdBall : Ball
     {
-        private float Gravity = 0.3f;
-        private float GroundStrikeEnergyLoss = 0.88f;
-        private float AirResistance = 0.988f;
-        private float GroundFriction = 0.4f;
+        private float gravity = 0.3f;
+        private float groundStrikeEnergyLoss = 0.88f;
+        private float airResistance = 0.988f;
+        private float groundFriction = 0.4f;
         public float GetVx
         {
             get { return vx; }
@@ -31,13 +31,13 @@ namespace AngryBirdsWinFormsApp
         {
             base.Go();
 
-            vy += Gravity;
+            vy += gravity;
 
             if (centerY >= DownSide())
             {
                 centerY = DownSide();
-                vy = -Math.Abs(vy * GroundStrikeEnergyLoss);
-                vx *= GroundFriction;
+                vy = -Math.Abs(vy * groundStrikeEnergyLoss);
+                vx *= groundFriction;
 
                 if (Math.Abs(vy) < 0.1f && Math.Abs(vx) < 0.1f)
                 {
@@ -46,8 +46,8 @@ namespace AngryBirdsWinFormsApp
                 }
             }
                         
-            vy *= AirResistance;
-            vx *= AirResistance;
+            vy *= airResistance;
+            vx *= airResistance;
         }
 
         public void ResetPosition()
