@@ -1,8 +1,7 @@
 # 🚀 Учебные проекты по C# и ООП
 
 <div align="center">
-  <img ![vs_programming](https://github.com/user-attachments/assets/39738078-89b3-4b3e-b98e-55842b35b813)
->
+  <img ![vs_programming](https://github.com/user-attachments/assets/39738078-89b3-4b3e-b98e-55842b35b813)>
   <br>
   <sub>Набор приложений, созданных в рамках курса "ООП на практике"</sub>
 </div>
@@ -19,15 +18,17 @@
 
 ---
 
-## 🏛️ Архихитектура репозитория
-📁 mystudyprojects
-├── 📁 BallGamesWinFormsApp # Библиотека игр с физикой объектов
-│ ├── AngryBirdsWinFormsApp # Игра "Angry Birds"
-│ ├── BillyardBallsWinFormsApp # Модель диффузии газа
-│ └── FruitNinjaWinFormsApp # Аркадная игра
-├── 📁 GeniyIdiotConsoleApp # Тестирующая система
-└── 📁 2048WinFormsApp # Клон игры 2048
+## 🏛️ Архитектура репозитория
 
+```text
+📁 mystudyprojects
+├── 📁 BallGamesWinFormsApp       # Библиотека игр с физикой объектов
+│   ├── AngryBirdsWinFormsApp     # Игра "Angry Birds"
+│   ├── BillyardBallsWinFormsApp  # Модель диффузии газа
+│   └── FruitNinjaWinFormsApp     # Разрезаем шары мышкой
+├── 📁 GeniyIdiotConsoleApp       # Шуточный тест с "диагнозом"
+└── 📁 2048WinFormsApp            # Клон игры 2048
+```
 
 ---
 
