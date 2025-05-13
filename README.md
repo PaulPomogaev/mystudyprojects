@@ -25,15 +25,81 @@
 - **Работы с графическим интерфейсом (WinForms)**
 - **Сериализации данных**
 - **Создания игровой логики**
-
-```text
 📁 Репозиторий содержит:
-├── GeniyIdiotConsoleApp      # Тест IQ с диагнозом
-├── GeniyIdiotWinFormsApp     # GUI версия теста
-├── 2048WinFormsApp           # Клон игры 2048
-├── BallGamesWinFormsApp      # Набор физических игр
-└── FrogWinFormsApp           # Головоломка с лягушками
+├── GeniyIdiotConsoleApp # Тест IQ с диагнозом
+├── GeniyIdiotWinFormsApp # GUI версия теста
+├── 2048WinFormsApp # Клон игры 2048
+├── BallGamesWinFormsApp # Набор физических игр
+└── FrogWinFormsApp # Головоломка с лягушками
 
 
-Ключевые слова для поиска:
-C#, WinForms, ООП, SOLID, JSON Serialization, Game Development, Desktop Applications, Event Handling, 2D Physics, MVC Pattern, Educational Projects
+---
+
+## 💡 Основные функции
+
+### 🧠 GeniyIdiot
+**Особенности:**
+- Два интерфейса (консоль + WinForms)
+- Система оценки результатов
+- JSON-хранилище вопросов
+
+**Пример кода:**
+```csharp
+// Сохранение результатов
+var result = new TestResult(user, diagnosis);
+UsersResultStorage.SaveTestResult(result);
+🧩 2048 Game
+Фичи:
+
+Адаптивное игровое поле (4x4, 5x5, 6x6)
+
+Система рекордов
+
+Анимация перемещения плиток
+
+🎯 BallGames
+Включает 7 игр:
+
+AngryBirds (2D физика)
+
+FruitNinja (таймеры/события)
+
+Бильярд (обработка столкновений)
+
+Салют (система частиц)
+
+🔧 Технологии
+Основной стек:
+
+Категория	Технологии
+Язык	C# (.NET 6)
+GUI	Windows Forms
+Хранение данных	JSON, File System
+Архитектура	ООП, SOLID принципы
+Ключевые компоненты:
+
+Сериализация/десериализация
+
+Пользовательские контролы
+
+Обработка событий
+
+Работа с таймерами
+
+🖼 Скриншоты
+<div align="center"> <h3>GeniyIdiot Test</h3> <img src="https://via.placeholder.com/400x300?text=Скриншот+теста" width="45%"> <h3>Игра 2048</h3> <img src="https://via.placeholder.com/400x300?text=Скриншот+2048" width="45%"> </div>
+🚀 Запуск
+Клонировать репозиторий:
+
+bash
+git clone https://github.com/PaulPomogaev/mystudyprojects.git
+Открыть решение в Visual Studio 2022+
+
+Выбрать стартовый проект
+
+Нажать Ctrl + F5
+
+🔍 Ключевые слова
+C# WinForms ООП SOLID JSON Сериализация Игровая логика События Таймеры 2D физика MVC
+
+
