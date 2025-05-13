@@ -1,7 +1,7 @@
 # 🚀 Учебные проекты по C# и ООП
 
 <div align="center">
-  <img src="https://via.placeholder.com/800x200?text=Логотип+проектов" alt="Обложка">
+  <img ![gif-programmer-2](https://github.com/user-attachments/assets/27322249-1c5d-4a07-86d6-d47b2e2c3891)>
   <br>
   <sub>Набор приложений, созданных в рамках курса "ООП на практике"</sub>
 </div>
@@ -9,97 +9,243 @@
 ---
 
 ## 📂 Содержание
-- [О проектах](#-о-проектах)
-- [Основные функции](#-основные-функции)
-- [Технологии](#-технологии)
-- [Скриншоты](#-скриншоты)
-- [Запуск](#-запуск)
-- [Ключевые слова](#-ключевые-слова)
+- [Архитектура репозитория](#-архитектура-репозитория)
+- [Ключевые проекты](#-ключевые-проекты)
+- [Технологический стек](#-технологический-стек)
+- [Архитектурные решения](#-архитектурные-решения)
+- [Демонстрация](#-демонстрация)
+- [Запуск проектов](#-запуск-проектов)
 
 ---
 
-## 🎯 О проектах
-
-Набор приложений для изучения:
-- **Объектно-ориентированного программирования**
-- **Работы с графическим интерфейсом (WinForms)**
-- **Сериализации данных**
-- **Создания игровой логики**
-📁 Репозиторий содержит:
-├── GeniyIdiotConsoleApp # Тест IQ с диагнозом
-├── GeniyIdiotWinFormsApp # GUI версия теста
-├── 2048WinFormsApp # Клон игры 2048
-├── BallGamesWinFormsApp # Набор физических игр
-└── FrogWinFormsApp # Головоломка с лягушками
-
+## 🏛️ Архитектура репозитория
+📁 mystudyprojects
+├── 📁 BallGamesWinFormsApp # Библиотека игр с физикой объектов
+│ ├── AngryBirdsWinFormsApp # Игра "Angry Birds" с физикой полёта, удара о землю и трения
+│ ├── BillyardBallsWinFormsApp # Модель диффузии газа с подсчётом столкновений
+│ └── FruitNinjaWinFormsApp # Аркадная игра с системой power-ups
+├── 📁 GeniyIdiotConsoleApp # Шуточный тест с "диагнозом" (консоль + GUI)
+└── 📁 2048WinFormsApp # Клон игры 2048 с адаптивным интерфейсом
 
 ---
 
-## 💡 Основные функции
+
+## 💡 Ключевые проекты
 
 ### 🧠 GeniyIdiot
 **Особенности:**
-- Два интерфейса (консоль + WinForms)
-- Система оценки результатов
-- JSON-хранилище вопросов
-
-**Пример кода:**
+- Два интерфейса (консольный + графический)
+- Динамическая генерация тестовых вопросов
+- Система оценки ответов "диагнозом"
+- Хранение данных в JSON
+- История результатов тестирования
+- Возможность добавления и удаления вопросов и ответов
+🔧 Пример кода:
 ```csharp
-// Сохранение результатов
-var result = new TestResult(user, diagnosis);
-UsersResultStorage.SaveTestResult(result);
-🧩 2048 Game
-Фичи:
+// Пример сериализации результатов
+public static void SaveTestResult(TestResult result)
+{
+    var results = ReadTestResults();
+    results.Add(result);
+    var json = JsonSerializer.Serialize(results);
+    FileManager.WriteAllText(resultsPath, json);
+}
+```
+ 
 
-Адаптивное игровое поле (4x4, 5x5, 6x6)
+### 🎮 2048
+**Особенности:**
+- Механика слияния одинаковых блоков
+- Система подсчета очков
+- Сохранение рекордов
+- Адаптивный интерфейс
+  📌 Правила:
+- Используйте стрелки для перемещения плиток
+- Совмещайте одинаковые числа, чтобы получить 2048
+- Игра заканчивается, когда ходы невозможны
+🔧 Пример кода:
+```csharp
+private void MoveRight()
+{
+    for (int i = 0; i < mapSize; i++)
+    {
+        for (int j = mapSize - 1; j >= 0; j--)
+        {
+            if (labelsMap[i, j].Text != string.Empty)
+            {
+                for (int k = j - 1; k >= 0; k--)
+                {
+                    if (labelsMap[i, k].Text == labelsMap[i, j].Text)
+                    {
+                        var number = int.Parse(labelsMap[i, j].Text);
+                        score += number * 2;
+                        labelsMap[i, j].Text = (number * 2).ToString();
+                        labelsMap[k, j].Text = string.Empty;
+                    }
+                }
+            }
+        }
+    }
+}
+```
 
-Система рекордов
+### ⚽ BallGames
+**Особенности:**
+- Физика отскока мяча
+- Несколько режимов игры:
+  - Сбиваем рандомного сгенерированный шарик другим 
+  - Феерверк
+  - Модель диффузии газа
+- Управление мышью/клавиатурой
+Пример кода:
+```csharp
+// Базовый класс
+public class Ball
+{
+    // ... 
+    
+    protected virtual void Go() // Полиморфизм
+    {
+        centerX += vx;
+        centerY += vy;
+    }
 
-Анимация перемещения плиток
+    public virtual void Draw(Graphics graphics) // Расширяемость
+    {
+        var rectangle = new RectangleF(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+        graphics.FillEllipse(brush, rectangle);
+    }
 
-🎯 BallGames
-Включает 7 игр:
+    public void Clear() // Работа с ресурсами
+    {
+        using (var g = form.CreateGraphics())
+        {
+            var oldBrush = brush;
+            brush = new SolidBrush(form.BackColor);
+            Draw(g);
+            brush = oldBrush;
+        }
+    }
+}
+```
 
-AngryBirds (2D физика)
+### 🐸 Frog Puzzle
+**Особенности:**
+- Логика перемещения между листьями
+- Поддержание стремления к лучшему результату
+- Визуальная индикация правильных ходов
+- Правила игры
+Пример кода:
+```csharp
+// Движение лягушек и увеличение счёта ходов
+private void Swap(PictureBox clickedPicture)
+{
+    var distance = Math.Abs(clickedPicture.Location.X - emptyPictureBox.Location.X) / emptyPictureBox.Size.Width;
+    if (distance > 2)
+    {
+        MessageBox.Show("Так ходить нельзя!");
+        return;
+    }
 
-FruitNinja (таймеры/события)
+    var location = clickedPicture.Location;
+    clickedPicture.Location = emptyPictureBox.Location;
+    emptyPictureBox.Location = location;
+    moveCount++;
+}
+```
 
-Бильярд (обработка столкновений)
+---
 
-Салют (система частиц)
+## 🔧 Технологический стек
+- **C# 9.0** (ООП, LINQ, события, работа с классами и наследованием)
+- **Windows Forms** (Создание графического интерфейса, обработка событий, пользовательские контролы)
+- **JSON** (Сериализация и десериализация данных для хранения вопросов, результатов тестирования и рекордов)
+- **Entity Framework** (Использовалась альтернатива - ручная работа с файловой системой через System.IO и JsonSerializer, без подключения полноценной БД)
+- **GDI+** (Рисование графических элементов: шариков, плиток, анимаций, эффектов столкновений и частиц)
 
-🔧 Технологии
-Основной стек:
+---
 
-Категория	Технологии
-Язык	C# (.NET 6)
-GUI	Windows Forms
-Хранение данных	JSON, File System
-Архитектура	ООП, SOLID принципы
-Ключевые компоненты:
+## 📂 Архитектурные решения
 
-Сериализация/десериализация
+1. Общая библиотека игр
+ ```csharp
+public abstract class Ball
+{
+    protected virtual void Go() // Полиморфизм
+    {
+        // Базовая физика движения
+    }
+    
+    public void Clear() // Инкапсуляция ресурсов
+    {
+        using (var g = form.CreateGraphics())
+        {
+            // Очистка предыдущей позиции
+        }
+    }
+}
+```
 
-Пользовательские контролы
+2. Event-driven архитектура
+```csharp
+public class BillyardBall : MoveBall
+{
+    public event EventHandler<HitEventArgs> OnHited;
+    
+    protected override void Go()
+    {
+        if (centerX <= LeftSide())
+        {
+            OnHited?.Invoke(this, new HitEventArgs(Side.Left));
+        }
+    }
+}
+```
 
-Обработка событий
+3. Шаблон Repository
+```csharp
+public static class UsersResultStorage
+{
+    public static List<TestResult> ReadTestResults()
+    {
+        var json = FileManager.ReadAllText(resultsPath);
+        return JsonSerializer.Deserialize<List<TestResult>>(json);
+    }
+}
+```
 
-Работа с таймерами
+---
 
-🖼 Скриншоты
-<div align="center"> <h3>GeniyIdiot Test</h3> <img src="https://via.placeholder.com/400x300?text=Скриншот+теста" width="45%"> <h3>Игра 2048</h3> <img src="https://via.placeholder.com/400x300?text=Скриншот+2048" width="45%"> </div>
-🚀 Запуск
+## 📸 Демонстрация
+
+| GeniyIdiot | 2048 | Frog Puzzle |
+|------------|------|-------------|
+| ![GeniyIdiot](![testItself](https://github.com/user-attachments/assets/e700c607-94a6-4ced-822b-24f0543d1af4)
+) | ![2048](![gameRules](https://github.com/user-attachments/assets/7861f03a-f479-4181-901d-40bb37861397)
+) | ![Frog](![frogGameWin](https://github.com/user-attachments/assets/9d2b1a2f-4e71-465f-8221-b854921ef0ce)
+) |
+
+---
+
+## 🚀 Запуск проектов
+
 Клонировать репозиторий:
 
 bash
 git clone https://github.com/PaulPomogaev/mystudyprojects.git
-Открыть решение в Visual Studio 2022+
+cd mystudyprojects
 
-Выбрать стартовый проект
+Сборка в Visual Studio:
 
-Нажать Ctrl + F5
+Открыть mystudyprojects.sln
 
-🔍 Ключевые слова
-C# WinForms ООП SOLID JSON Сериализация Игровая логика События Таймеры 2D физика MVC
+Выбрать стартовый проект в Solution Explorer
+
+Собрать решение (Ctrl+Shift+B)
+
+Запустить (F5)
 
 
+🔑 Ключевые слова
+C# | ООП | WinForms | Игровая разработка | JSON | SOLID | Event-driven | Физика | Многопоточность | GDI+ | LINQ | Паттерны проектирования | Сериализация
+   
