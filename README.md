@@ -1,7 +1,8 @@
 # 🚀 Учебные проекты по C# и ООП
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/27322249-1c5d-4a07-86d6-d47b2e2c3891" alt="Программист за работой">
+  <img ![vs_programming](https://github.com/user-attachments/assets/39738078-89b3-4b3e-b98e-55842b35b813)
+>
   <br>
   <sub>Набор приложений, созданных в рамках курса "ООП на практике"</sub>
 </div>
@@ -40,7 +41,7 @@
 - Хранение данных в JSON
 - История результатов тестирования
 - Возможность добавления и удаления вопросов и ответов
-🔧 Пример кода:
+- 🔧 Пример кода:
 ```csharp
 // Пример сериализации результатов
 public static void SaveTestResult(TestResult result)
@@ -63,7 +64,7 @@ public static void SaveTestResult(TestResult result)
 - Используйте стрелки для перемещения плиток
 - Совмещайте одинаковые числа, чтобы получить 2048
 - Игра заканчивается, когда ходы невозможны
-  🔧 Пример кода:
+- 🔧 Пример кода:
 ```csharp
 private void MoveRight()
 {
@@ -97,7 +98,7 @@ private void MoveRight()
   - Феерверк
   - Модель диффузии газа
 - Управление мышью/клавиатурой
-  🔧 Пример кода:
+- 🔧 Пример кода:
 ```csharp
 // Базовый класс
 public class Ball
@@ -135,7 +136,7 @@ public class Ball
 - Поддержание стремления к лучшему результату
 - Визуальная индикация правильных ходов
 - Правила игры
- 🔧 Пример кода:
+- 🔧 Пример кода:
 ```csharp
 // Движение лягушек и увеличение счёта ходов
 private void Swap(PictureBox clickedPicture)
